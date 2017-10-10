@@ -14,6 +14,11 @@ Make your app expose services on port 8080 as default.
 
 Include custom Java options in `$JAVA_OPTS`.
 
+By default, the base image will copy all JAR files in the `target/` directory. If there's exactly one JAR file present, 
+there's no need calling it `app.jar` or specifying the `JAR_FILE` env: the run script will use it as is.
+
+If, however, there are one or more JAR files present, one must either call the main JAR `app.jar` or specify `JAR_FILE`.
+
 Example
 ---------------------
 
@@ -21,7 +26,7 @@ The `Dockerfile` below allows us to specify an alternate JAR file build time (vi
 and run time as an environment variable. We also specify additional options for the JVM:
 
 ```
-FROM nais:java-8
+FROM navikt/java:8
 
 ARG JAR_FILE
 ENV JAR_FILE ${JAR_FILE}
