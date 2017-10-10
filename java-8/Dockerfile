@@ -8,7 +8,7 @@ ENV TZ="Europe/Oslo"
 ENV DEFAULT_JAVA_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
 
 COPY ./run-java.sh /
-ONBUILD COPY target/*.jar /app
+ONBUILD COPY target/*.jar /app/
 
 WORKDIR /app
 
