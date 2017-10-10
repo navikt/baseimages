@@ -13,4 +13,4 @@ WORKDIR /app
 
 EXPOSE 8080
 
-CMD ["sh", "-c", "java", "$DEFAULT_JAVA_OPTS $JAVA_OPTS", "-jar", "/app/app.jar"]
+CMD ["sh", "-c", "java", "$DEFAULT_JAVA_OPTS", "$JAVA_OPTS", "-jar", "${JAR_FILE:-app.jar}"]
