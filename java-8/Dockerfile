@@ -7,10 +7,11 @@ ENV TZ="Europe/Oslo"
 # Please see https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits
 ENV DEFAULT_JAVA_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
 
+COPY ./run-java.sh /
 ONBUILD COPY target/*.jar /app
 
 WORKDIR /app
 
 EXPOSE 8080
 
-CMD ["sh", "-c", "java", "$DEFAULT_JAVA_OPTS", "$JAVA_OPTS", "-jar", "${JAR_FILE:-app.jar}"]
+CMD ["/run-java.sh"]
