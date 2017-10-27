@@ -1,51 +1,31 @@
 NAIS Java 8 baseimage
 =====================
 
-WIP draft.
 
-
-Usage
+Basic Usage
 ---------------------
 
-Build your app to `./target/app.jar` or provide your own jar file 
-using the `JAR_FILE` environment variable.
+Create a `Dockerfile` containing:
 
-Make your app expose services on port 8080 as default.
-
-Include custom Java options in `$JAVA_OPTS`.
-
-By default, the base image will copy all JAR files in the `target/` directory. If there's exactly one JAR file present, 
-there's no need calling it `app.jar` or specifying the `JAR_FILE` env: the run script will use it as is.
-
-If, however, there are one or more JAR files present, one must either call the main JAR `app.jar` or specify `JAR_FILE`.
-
-Example
----------------------
-
-The `Dockerfile` below allows us to specify an alternate JAR file build time (via `--build-arg JAR_FILE=my.jar`) 
-and run time as an environment variable. We also specify additional options for the JVM:
-
-```
+```Dockerfile
 FROM navikt/java:8
-
-ARG JAR_FILE
-ENV JAR_FILE ${JAR_FILE}
-
-ENV JAVA_OPTS="-Djavax.net.ssl.trustStore=/truststore.jks \
-               -Djavax.net.ssl.trustStorePassword=changeit"
-
 ```
 
-The JAR file can be a bit simplified during build:
+By default JARs under `target/` is copied into the container; if there's exactly one JAR present it will be ran.
+Port `8080` is exposed by default, so you should make your app listen on this port.
+Custom runtime options may be specified using `$JAVA_OPTS`.
+
+### I have more than one JAR and get `Error: Unable to access jarfile app.jar`
+If there's more than one JAR in `target/`, you must specify which JAR to run using the `JAR_FILE` build arg or environment variable:
+
+Specify which JAR to copy and run during build time:
 
 ```
-ARG BUILD_NO
-ENV JAR_FILE ${JAR_FILE:-myapp-${BUILD_NO}.jar}
+docker build -t myimage:tag --build-arg JAR_FILE=my-app.jar .
 ```
 
-This will either use the environment variable `JAR_FILE` or fall back 
-to the default `myapp-BUILD_NO`, where `BUILD_NO` is specified build time:
+Or specifying which JAR to run at runtime:
 
 ```
-docker build -t myapp:latest --build-arg BUILD_NO=1337 .
+docker run -e JAR_FILE=my-app.jar myimage:tag
 ```
