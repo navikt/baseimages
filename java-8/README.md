@@ -10,22 +10,32 @@ Create a `Dockerfile` containing:
 ```Dockerfile
 FROM navikt/java:8
 ```
-
-By default JARs under `target/` is copied into the container; if there's exactly one JAR present it will be ran.
-Port `8080` is exposed by default, so you should make your app listen on this port.
-Custom runtime options may be specified using `$JAVA_OPTS`.
-
-### I have more than one JAR and get `Error: Unable to access jarfile app.jar`
-If there's more than one JAR in `target/`, you must specify which JAR to run using the `JAR_FILE` build arg or environment variable:
-
-Specify which JAR to copy and run during build time:
+and make sure you somehow copy your JAR to `/app/app.jar`:
 
 ```
-docker build -t myimage:tag --build-arg JAR_FILE=my-app.jar .
+FROM navikt/java:8
+COPY target/my-awesome.jar .
 ```
 
-Or specifying which JAR to run at runtime:
+You can also use a multi stage build to reduce layers in the resulting image:
 
 ```
-docker run -e JAR_FILE=my-app.jar myimage:tag
+FROM busybox
+
+WORKDIR /app
+
+ARG JAR_FILE
+COPY target/${JAR_FILE} /app/
+
+FROM navikt/java:8
+COPY --from=0 /app/app.jar .
 ```
+
+and build using `docker build --build-arg JAR_FILE=my-awesome.jar`
+
+### Defaults
+* Exposing port `8080`
+* `-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap`
+* Main JAR file `/app/app.jar`
+
+Custom runtime options may be specified using the environment variable `JAVA_OPTS`.
