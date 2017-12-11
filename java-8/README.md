@@ -14,7 +14,7 @@ and make sure you somehow copy your JAR to `/app/app.jar`:
 
 ```
 FROM navikt/java:8
-COPY target/my-awesome.jar .
+COPY target/my-awesome.jar app.jar
 ```
 
 You can also use a multi stage build to reduce layers in the resulting image:
