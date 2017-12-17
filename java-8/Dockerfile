@@ -13,4 +13,4 @@ WORKDIR /app
 
 EXPOSE 8080
 
-CMD ["/run-java.sh"]
+ENTRYPOINT ["/run-java.sh"]
