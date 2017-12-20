@@ -3,6 +3,12 @@ set -x
 
 if test -r "${NAV_TRUSTSTORE_PATH}" -a -n "${NAV_TRUSTSTORE_PASSWORD}";
 then
+    if ! echo "${NAV_TRUSTSTORE_PASSWORD}" | keytool -list -keystore ${NAV_TRUSTSTORE_PATH};
+    then
+        echo Truststore is corrupt, or bad password
+        exit 1
+    fi
+
     JAVA_OPTS="${JAVA_OPTS} -Djavax.net.ssl.trustStore=${NAV_TRUSTSTORE_PATH} -Djavax.net.ssl.trustStorePassword=${NAV_TRUSTSTORE_PASSWORD}"
 fi
 
