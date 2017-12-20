@@ -2,7 +2,7 @@
 
 if test -r "${NAV_TRUSTSTORE_PATH}";
 then
-    if ! echo "${NAV_TRUSTSTORE_PASSWORD}" | keytool -list -keystore ${NAV_TRUSTSTORE_PATH};
+    if ! echo "${NAV_TRUSTSTORE_PASSWORD}" | keytool -list -keystore ${NAV_TRUSTSTORE_PATH} > /dev/null;
     then
         echo Truststore is corrupt, or bad password
         exit 1
