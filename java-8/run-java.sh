@@ -9,11 +9,7 @@ then
     fi
 
     JAVA_OPTS="${JAVA_OPTS} -Djavax.net.ssl.trustStore=${NAV_TRUSTSTORE_PATH}"
-
-    if test -n "${NAV_TRUSTSTORE_PASSWORD}";
-    then
-        JAVA_OPTS="${JAVA_OPTS} -Djavax.net.ssl.trustStorePassword=${NAV_TRUSTSTORE_PASSWORD}"
-    fi
+    JAVA_OPTS="${JAVA_OPTS} -Djavax.net.ssl.trustStorePassword=${NAV_TRUSTSTORE_PASSWORD}"
 fi
 
 set -x
