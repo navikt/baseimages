@@ -37,5 +37,6 @@ and build using `docker build --build-arg JAR_FILE=my-awesome.jar`
 * Exposing port `8080`
 * `-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap`
 * Main JAR file `/app/app.jar`
+* `app.jar` not running as PID 1
 
 Custom runtime options may be specified using the environment variable `JAVA_OPTS`.
