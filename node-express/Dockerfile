@@ -6,3 +6,5 @@ RUN mkdir -p /var/server
 WORKDIR /var/server
 
 RUN npm install -g express@4.16.3
+
+CMD ["node", "/app/server.js"]
