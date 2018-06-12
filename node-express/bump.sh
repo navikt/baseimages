@@ -1,4 +1,0 @@
-OLD=$(cat ./VERSION | CUT -D'.' -F1)
-NEW=$(EXPR $OLD + 1).0.0
-
-ECHO "$NEW" > VERSION

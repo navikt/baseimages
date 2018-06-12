@@ -8,11 +8,10 @@ Enkel Docker image med Node og Express installert.
 
 ### docker run
 
-For å kjøre uten docker-compose kan man bruke kommandoen under.
+```
+docker run --volume $(PWD)./:/var/server navikt/node-express
+```
 
-```
-docker run --volume $(PWD)./:/var/server navikt/node-express node /var/server/server.js
-```
 
 ### docker-compose
 
@@ -25,14 +24,16 @@ docker-express:
       - ./:/var/server/
     ports:
       - 8000:8000
-    entrypoint:
-      - node
-      - /var/server/server.js
 ```
 
 Kjør så `docker-compose run node-express`
 
 
-# Henvendelser
+## Release av ny versjon
+
+Vi bruker Docker Automated Builds for å release ny versjon. Dette gjøres ved å lage en ny tag i Github, og da bygger Docker Hub automatisk en ny versjon basert på navnet til tag'en. Bruk derfor bare tall.
+
+
+## Henvendelser
 
 Interne henvendelser kan sendes via Slack i kanalen #teamsoknad.
