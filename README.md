@@ -7,6 +7,7 @@ Tilgjengelige images:
 
 * Java 8
 * Java 9
+* Node 9 og Express 4
 
 # Komme i gang
 
