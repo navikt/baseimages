@@ -31,7 +31,12 @@ Kjør så `docker-compose run node-express`
 
 ## Release av ny versjon
 
-Vi bruker Docker Automated Builds for å release ny versjon. Dette gjøres ved å lage en ny tag i Github, og da bygger Docker Hub automatisk en ny versjon basert på navnet til tag'en. Bruk derfor bare tall.
+Vi bruker Docker Automated Builds for å release ny versjon. Dette gjøres ved å lage en ny tag i Github, og da bygger Docker Hub automatisk en ny versjon basert på navnet til tag'en.
+
+```
+git tag -m "<hvorfor ny tag/release?>" node-express-<version>
+git push --tags
+```
 
 
 ## Henvendelser

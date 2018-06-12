@@ -7,13 +7,13 @@ Tilgjengelige images:
 
 * Java 8
 * Java 9
-* Node 9 og Express 4
+* Node 9 med Express 4
 
-# Komme i gang
+
+## Komme i gang
 
 Vennligst se hvert underprosjekt sine respektive README.
 
----
 
 ## For NAV-ansatte
 
