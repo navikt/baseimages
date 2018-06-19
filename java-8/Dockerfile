@@ -1,5 +1,7 @@
 FROM openjdk:8-jre-alpine
 
+RUN apk add --no-cache curl
+
 ENV LC_ALL="no_NB.UTF-8"
 ENV LANG="no_NB.UTF-8"
 ENV TZ="Europe/Oslo"
