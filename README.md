@@ -5,9 +5,9 @@ Dette prosjektet inneholder basis docker images til bruk med NAIS platformen.
 
 Tilgjengelige images:
 
-* Java 8
-* Java 9
-* Java 10
+* JDK 8
+* ~~JDK 9~~ - Bruk JDK 10 i stedet
+* JDK 10
 * Node 9 med Express 4
 
 
