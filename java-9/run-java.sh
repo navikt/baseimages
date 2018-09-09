@@ -14,4 +14,9 @@ fi
 
 set -x
 
-exec java ${DEFAULT_JAVA_OPTS} ${JAVA_OPTS} -jar app.jar ${RUNTIME_OPTS} $@
+if test -f ./bin/app;
+then
+	./bin/app $@
+else
+	exec java ${DEFAULT_JVM_OPTS} ${JAVA_OPTS} -jar app.jar ${RUNTIME_OPTS} $@
+fi

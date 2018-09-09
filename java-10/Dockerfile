@@ -9,7 +9,7 @@ ENV LANG="no_NB.UTF-8"
 ENV TZ="Europe/Oslo"
 
 # Please see https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits
-ENV DEFAULT_JAVA_OPTS="-XX:+UnlockExperimentalVMOptions"
+ENV DEFAULT_JVM_OPTS="-XX:+UnlockExperimentalVMOptions"
 
 COPY ./run-java.sh /
 
