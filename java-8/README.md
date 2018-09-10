@@ -33,6 +33,18 @@ COPY --from=0 /app/app.jar .
 
 and build using `docker build --build-arg JAR_FILE=my-awesome.jar`
 
+### Using gradle?
+
+You can use `gradle installDist` by making sure the startup script is
+copied into the docker container as `/app/bin/app`. Here's an example:
+
+```
+FROM navikt/java:8
+
+COPY build/install/myapp/bin/myapp bin/app
+COPY build/install/myapp/lib ./lib/
+```
+
 ### Defaults
 * Exposing port `8080`
 * `-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap`
@@ -45,6 +57,11 @@ Custom runtime options may be specified using the environment variable `JAVA_OPT
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+
+## 2018-09-xx
+
+### Added
+- Support for `gradle installDist` files
 
 ## 2018-08-30
 ### Fixed
