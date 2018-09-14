@@ -17,21 +17,21 @@ set -x
 if test -f ./bin/app;
 then
     ./bin/app $@
-elif test -f app.jar
+elif test -d "/app/WEB-INF";
 then
     exec java \
     ${DEFAULT_JVM_OPTS} \
     ${JAVA_OPTS} \
-    ${PROXY_OPTS} \
-    -jar app.jar \
+    -server \
+    ${CLASSPATH} \
+    ${MAIN_CLASS} \
     ${RUNTIME_OPTS} \
     $@
 else
     exec java \
     ${DEFAULT_JVM_OPTS} \
     ${JAVA_OPTS} \
-    ${PROXY_OPTS} \
-    -server \
-    -classpath "${APP_DIR}/WEB-INF/classes:${APP_DIR}/WEB-INF/lib/*" \
-    Main
+    -jar app.jar \
+    ${RUNTIME_OPTS} \
+    $@
 fi
