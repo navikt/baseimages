@@ -45,11 +45,17 @@ COPY build/install/myapp/bin/myapp bin/app
 COPY build/install/myapp/lib ./lib/
 ```
 
+## Using exploded WAR?
+
+Supply the name of your main class as an environment variable called
+`MAIN_CLASS` if the name of your main class is not the default "Main".
+
 ### Defaults
 * Exposing port `8080`
 * `-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap`
 * Main JAR file `/app/app.jar`
 * `app.jar` not running as PID 1
+* `MAIN_CLASS` "Main"
 
 Custom runtime options may be specified using the environment variable `JAVA_OPTS`.
 
@@ -57,6 +63,11 @@ Custom runtime options may be specified using the environment variable `JAVA_OPT
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+
+## 2018-09-14
+
+### Added
+- Support for exploded war.
 
 ## 2018-09-xx
 
