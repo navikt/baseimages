@@ -69,7 +69,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 ### Added
 - Support for exploded war.
 
-## 2018-09-xx
+### Changed
+- Added support for naisd proxy settings.
+
+## 2018-09-10
 
 ### Added
 - Support for `gradle installDist` files

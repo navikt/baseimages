@@ -58,3 +58,30 @@ Supply the name of your main class as an environment variable called
 * `MAIN_CLASS` "Main"
 
 Custom runtime options may be specified using the environment variable `JAVA_OPTS`.
+
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+
+## 2018-09-14
+
+### Added
+- Support for exploded war.
+
+### Changed
+- Added support for naisd proxy settings.
+
+## 2018-09-11
+
+### Fixed
+- `run-java.sh` execute bit set so it is runnable.
+
+## 2018-09-10
+
+### Added
+- Support for `gradle installDist` files.
+
+## 2018-08-10
+### Added
+- Initial JDK 10 image built.

@@ -1,21 +1,19 @@
 NAIS baseimages
 ================
 
-Dette prosjektet inneholder basis docker images til bruk med NAIS platformen.
+This project contains base docker images for use with the NAIS platform.
 
-Tilgjengelige images:
-
+Available images:
 * JDK 8
-* ~~JDK 9~~ - Bruk JDK 10 i stedet
 * JDK 10
-* Node 9 med Express 4
+* Node 9 with Express 4
 
+## Getting Started
 
-## Komme i gang
+Please see each baseimage README for usage and changelogs.
 
-Vennligst se hvert underprosjekt sine respektive README.
+## Requests for changes and feedback
 
+Issues raised and pull requests are most welcome. 
 
-## For NAV-ansatte
-
-Interne henvendelser kan sendes via Slack i kanalen #docker.
+Internal communication takes place at the NAV slack in the #docker channel.
