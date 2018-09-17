@@ -50,6 +50,12 @@ COPY build/install/myapp/lib ./lib/
 Supply the name of your main class as an environment variable called
 `MAIN_CLASS` if the name of your main class is not the default "Main".
 
+## Using AppDynamics?
+
+During `docker build`, copy the Java Agent inside the container
+as `/appdynamics/javaagent.jar`, or change the environment variable `APPDYNAMICS_AGENT_FILE`
+to point to its location.
+
 ### Defaults
 * Exposing port `8080`
 * `-XX:+UnlockExperimentalVMOptions`

@@ -50,6 +50,12 @@ COPY build/install/myapp/lib ./lib/
 Supply the name of your main class as an environment variable called
 `MAIN_CLASS` if the name of your main class is not the default "Main".
 
+## Using AppDynamics?
+
+During `docker build`, copy the Java Agent inside the container
+as `/appdynamics/javaagent.jar`, or change the environment variable `APPDYNAMICS_AGENT_FILE`
+to point to its location.
+
 ### Defaults
 * Exposing port `8080`
 * `-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap`
@@ -64,12 +70,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
+## 2018-09-17
+
+### Added
+- Support for AppDynamics
+
 ## 2018-09-14
 
 ### Added
 - Support for exploded war.
+- Support for new proxy JVM options set by `naisd`
 
-## 2018-09-xx
+## 2018-09-10
 
 ### Added
 - Support for `gradle installDist` files

@@ -15,6 +15,14 @@ fi
 # inject proxy settings set by the nais platform
 JAVA_OPTS="${JAVA_OPTS} ${JAVA_PROXY_OPTIONS}"
 
+if test -r "${APPDYNAMICS_AGENT_FILE}";
+then
+    JAVA_OPTS="${JAVA_OPTS} -javaagent:${APPDYNAMICS_AGENT_FILE}"
+    JAVA_OPTS="${JAVA_OPTS} -Dappdynamics.agent.applicationName=${APP_NAME}"
+    JAVA_OPTS="${JAVA_OPTS} -Dappdynamics.agent.nodeName=${FASIT_ENVIRONMENT_NAME}_$(hostname)"
+    JAVA_OPTS="${JAVA_OPTS} -Dappdynamics.agent.tierName=${FASIT_ENVIRONMENT_NAME}_${APP_NAME}"
+fi
+
 set -x
 
 if test -f ./bin/app;
