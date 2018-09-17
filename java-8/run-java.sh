@@ -16,8 +16,22 @@ set -x
 
 if test -f ./bin/app;
 then
-	./bin/app $@
+    ./bin/app $@
+elif test -d "/app/WEB-INF";
+then
+    exec java \
+    ${DEFAULT_JVM_OPTS} \
+    ${JAVA_OPTS} \
+    -server \
+    ${CLASSPATH} \
+    ${MAIN_CLASS} \
+    ${RUNTIME_OPTS} \
+    $@
 else
-	exec java ${DEFAULT_JVM_OPTS} ${JAVA_OPTS} -jar app.jar ${RUNTIME_OPTS} $@
+    exec java \
+    ${DEFAULT_JVM_OPTS} \
+    ${JAVA_OPTS} \
+    -jar app.jar \
+    ${RUNTIME_OPTS} \
+    $@
 fi
-
