@@ -16,6 +16,10 @@ set -x
 
 if test -f ./bin/app;
 then
+    # Gradle application plugin overwrites DEFAULT_JVM_OPTS
+    set +x
+    JAVA_OPTS="${JAVA_OPTS} ${DEFAULT_JVM_OPTS}"
+    set -x
 	./bin/app $@
 else
 	exec java ${DEFAULT_JVM_OPTS} ${JAVA_OPTS} -jar app.jar ${RUNTIME_OPTS} $@
