@@ -1,37 +1,25 @@
 NAIS Java 8 baseimage
 =====================
 
-
 Basic Usage
 ---------------------
 
+We support three ways of running your app:
+
+1. A fat jar called `app.jar`
+2. An exploded war
+3. Startup script generated using Maven Assembly og Gradle's `installDist`
+
 Create a `Dockerfile` containing:
+
+### Simplest example
+The simplest way of running your app is to create a far jar and copy it into your container as `app.jar`.
+Since the default working directory is `/app`, there's no need to specify the path.
 
 ```Dockerfile
 FROM navikt/java:8
-```
-and make sure you somehow copy your JAR to `/app/app.jar`:
-
-```
-FROM navikt/java:8
 COPY target/my-awesome.jar app.jar
 ```
-
-You can also use a multi stage build to reduce layers in the resulting image:
-
-```
-FROM busybox
-
-WORKDIR /app
-
-ARG JAR_FILE
-COPY target/${JAR_FILE} /app/
-
-FROM navikt/java:8
-COPY --from=0 /app/app.jar .
-```
-
-and build using `docker build --build-arg JAR_FILE=my-awesome.jar`
 
 ### Using gradle?
 
@@ -45,17 +33,12 @@ COPY build/install/myapp/bin/myapp bin/app
 COPY build/install/myapp/lib ./lib/
 ```
 
-## Using exploded WAR?
+### Using exploded WAR?
 
 Supply the name of your main class as an environment variable called
 `MAIN_CLASS` if the name of your main class is not the default "Main".
 
-### Defaults
-* Exposing port `8080`
-* `-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap`
-* Main JAR file `/app/app.jar`
-* `app.jar` not running as PID 1
-* `MAIN_CLASS` "Main"
+## Customisation
 
 Custom runtime options may be specified using the environment variable `JAVA_OPTS`.
 
