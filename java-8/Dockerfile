@@ -3,7 +3,7 @@ FROM openjdk:8u181-jdk
 RUN wget -O /dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64
 RUN chmod +x /dumb-init
 
-RUN apt-get update && apt-get install -y --no-install-recommends locales
+RUN apt-get update && apt-get install -y --no-install-recommends locales && apt-get install -y curl
 RUN sed -i -e 's/# nb_NO.UTF-8 UTF-8/nb_NO.UTF-8 UTF-8/' /etc/locale.gen && locale-gen
 ENV LC_ALL="nb_NO.UTF-8"
 ENV LANG="nb_NO.UTF-8"
