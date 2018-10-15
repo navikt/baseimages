@@ -47,7 +47,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
-
+## 2018-10-15
+### Fixed
+- Fixed default locale to `nb_NO`. #26
 
 ## 2018-10-02
 ### Added
