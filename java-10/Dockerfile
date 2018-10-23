@@ -15,11 +15,13 @@ ENV DEFAULT_JVM_OPTS="-XX:+UnlockExperimentalVMOptions"
 ENV MAIN_CLASS="Main"
 ENV CLASSPATH="/app/WEB-INF/classes:/app/WEB-INF/lib/*"
 
-COPY ./run-java.sh /
+COPY init-scripts /init-scripts
+COPY entrypoint.sh /
+COPY run-java.sh /
 
 WORKDIR /app
 
 EXPOSE 8080
 
 ENTRYPOINT ["/dumb-init"]
-CMD ["/run-java.sh"]
+CMD ["/entrypoint.sh"]
