@@ -22,6 +22,14 @@ FROM navikt/java:11
 COPY target/my-awesome.jar app.jar
 ```
 
+If you want to use another name for your file, set it using `APP_JAR`:
+
+```Dockerfile
+FROM navikt/java:11
+ENV APP_JAR=my-awesome.jar
+COPY target/my-awesome.jar .
+```
+
 ### Using gradle?
 
 You can use `gradle installDist` by making sure the startup script is
@@ -32,6 +40,14 @@ FROM navikt/java:11
 
 COPY build/install/myapp/bin/myapp bin/app
 COPY build/install/myapp/lib ./lib/
+```
+
+If you want to use another name for your file, set it using `APP_BINARY`:
+
+```Dockerfile
+FROM navikt/java:11
+ENV APP_BINARY=myapp
+COPY build/install/myapp/ .
 ```
 
 ### Using exploded WAR?
@@ -85,6 +101,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 ## 2018-10-24
+
+### Added
+- Option to specify another name for `app.jar` and `bin/app`
 
 ### Fixed
 - Runtime args are now passed on to app 

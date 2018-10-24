@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 
-if test -f ./bin/app;
+if test -f ./bin/${APP_BINARY};
 then
     # Gradle application plugin overwrites DEFAULT_JVM_OPTS
     JAVA_OPTS="${JAVA_OPTS} ${DEFAULT_JVM_OPTS}"
     set -x
-    ./bin/app $@
+    ./bin/${APP_BINARY} $@
 elif test -d "/app/WEB-INF";
 then
     set -x
@@ -22,7 +22,7 @@ else
     exec java \
     ${DEFAULT_JVM_OPTS} \
     ${JAVA_OPTS} \
-    -jar app.jar \
+    -jar ${APP_JAR} \
     ${RUNTIME_OPTS} \
     $@
 fi

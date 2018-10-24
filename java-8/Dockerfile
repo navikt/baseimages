@@ -11,7 +11,8 @@ ENV TZ="Europe/Oslo"
 
 # Please see https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits
 ENV DEFAULT_JVM_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
-
+ENV APP_BINARY=app
+ENV APP_JAR=app.jar
 ENV MAIN_CLASS="Main"
 ENV CLASSPATH="/app/WEB-INF/classes:/app/WEB-INF/lib/*"
 
