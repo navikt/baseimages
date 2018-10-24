@@ -84,6 +84,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
+## 2018-10-24
+
+### Fixed
+- Runtime args are now passed on to app 
+
 ## 2018-10-20
 
 ### Added

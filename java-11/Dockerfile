@@ -20,5 +20,4 @@ WORKDIR /app
 
 EXPOSE 8080
 
-ENTRYPOINT ["/dumb-init"]
-CMD ["/entrypoint.sh"]
+ENTRYPOINT ["/dumb-init", "--", "/entrypoint.sh"]

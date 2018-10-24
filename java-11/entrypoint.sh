@@ -11,4 +11,4 @@ else
     echo "/init-scripts does not exist, skipping startup scripts"
 fi
 
-exec /run-java.sh
+exec /run-java.sh $@
