@@ -3,11 +3,7 @@ language: minimal
 services:
 - docker
 script:
-- docker build --pull -t navikt/java:8 java-8
-- docker build --pull -t navikt/java:8-appdynamics java-8/appdynamics
-- docker build --pull -t navikt/java:10 java-10
-- docker build --pull -t navikt/java:10-appdynamics java-10/appdynamics
-- docker build --pull -t navikt/java:11 java-11
+- make
 deploy:
   provider: script
   script: bash docker_push.sh
@@ -15,5 +11,6 @@ deploy:
     branch: master
 env:
   global:
+  - MAKEFLAGS="-j 5"
   - secure: LrjwEN66T79PBcO/utVY/LXFXeM0ChpZUjd2igVQHwEp4KPU6Fy+x37q/i/8d4vXOwwDIGMDT8LZDJBAsYihygLrvoL7X1wNIHcI30dYXZYfr0UCSWQthoPgXyMTW/iXrj8RCHm6oE0nJEpPquf95seteo+io5KuMUimOD2ITZrfu1PW8/9dy1mD+I8O+qyDr7+XRFBqwUcCFLO1Wk2S+wAmgq01aRJDmCtGyKZ/Wo1DhohfwooA/kgNp8Ds/e47t9ZZmwyHeGaE/VkvqYuGcjGc/E96pzWa8uNdjG184+zXtAkZBhAyfrcLW9iQvYvv62J/od2+FiHu5Bc6iwn2do1S0zsdgcxwRn5oW/bn1upBDU34sgaaGFREUiL4qK/QeXyAky90pI0FygF78E9V+KsiyrcBlWbh+exjdmcQmcaVsVp4XLBheZMkoBImdIbf8f3R8VcnvMBytO9y08GJlF4HySNep/2tUbnQIyD1vl3QjM3E03FP6W31rHuuBJj09t2NjUoXgFP9QyELvj3IhpP95QJYSEY7dXuzzUgsVNnkuIYxkEAxU8FlryugV0URlDnPGv1m/EVPXqC53Ev1oiPoPuVYbB5hVzydWIMdhNSRF7SC13V3eDSapDMLRd5rqhrnL0Q1Jk70x9CdmPgU6qnjfBW3R+dQcLsbjCF3qP4=
   - secure: XAO4Q5RGThaQae18pQpAAex1LAy5Co4j+lbr71vciofDyoL1sGRXttu44aPjBUT8cBbBZPTo/QnnUGsN5S5GemkrmjqD/6z8+28iu6e4bn/uLC6IBW3Pd3gjBdxrITiN/WreSUuR5QMgq3OSmCFLl0a6V5v6vb/retEDcpNczMvKMfVgx+vtr+2dWpA4FkdLExrulHI5dk3J8ZLkevj+xHWPEJ/3iUqel70E1us9C6/HDkNhs9pHMcsEn6neLkdyPSOk0BJKPOWWb3pvYS5jXgZDw3pHygA7Cf4AKzozd4Sji00BwlHAdJK8N/MO6r18hsc3v+YAaHj76uwb6jEM6VozLJsP5V2/9RwcMPeZZmvEVS5xHAE+E4KDpZMBoZ37jKQSNfPafzosNlYaxBmmM0+SaFdjr4i3DFkRA0TIiBBO0+gWM/TBYAjV4kitysUddYCaY6BC4HWgMaFKTAv0txCDGli0w7u3C+ypC0/pQoc0/hcT8nSdaRTZcsp2RweLWIaBgMfPKWj+TmSwv6+9DVk/NXZob9BGlo8anHzyvLECLiQArMt1r53klh7i1zv8X4isZDGKSEqEzxejbA9vAHC1xcwQP0sLOhGtFJefMhM5rCCnnXcYENNsUi+ow+UE6TuwXiBnXcdW7FmXf3jbZY3MRfznGD7ihJEOZa07O/o=
