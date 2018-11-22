@@ -2,13 +2,13 @@
 .PHONY: all dist jar
 
 all: build
-	docker run --rm -it --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-dist-8
-	docker run --rm -it --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-dist-10
-	docker run --rm -it --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-dist-11
+	docker run --rm --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-dist-8
+	docker run --rm --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-dist-10
+	docker run --rm --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-dist-11
 
-	docker run --rm -it --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-jar-8
-	docker run --rm -it --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-jar-10
-	docker run --rm -it --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-jar-11
+	docker run --rm --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-jar-8
+	docker run --rm --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-jar-10
+	docker run --rm --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-jar-11
 
 build: distbuild jarbuild
 
