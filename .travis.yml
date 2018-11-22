@@ -4,6 +4,7 @@ services:
 - docker
 script:
 - make
+- cd test && make
 deploy:
   provider: script
   script: bash docker_push.sh

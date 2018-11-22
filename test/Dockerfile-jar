@@ -1,0 +1,4 @@
+ARG BASEIMAGE_VERSION
+FROM navikt/java:$BASEIMAGE_VERSION
+
+COPY build/libs/baseimage-test-all.jar app.jar
