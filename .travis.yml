@@ -5,6 +5,9 @@ services:
 script:
 - make -j 5
 - cd test && make
+before_cache:
+- rm -rf $TRAVIS_BUILD_DIR/test/.gradle
+- rm -rf $TRAVIS_BUILD_DIR/test/build
 deploy:
   provider: script
   script: bash docker_push.sh
