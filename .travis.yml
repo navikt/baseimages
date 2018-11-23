@@ -4,7 +4,7 @@ services:
 - docker
 script:
 - make -j 5
-- cd test && make
+- make -w -C test
 deploy:
   skip_cleanup: true
   provider: script
