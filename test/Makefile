@@ -1,16 +1,17 @@
 
-.PHONY: all dist jar
+.PHONY: test dist jar
 
-all: build
+test: disttest jartest
+
+disttest: distbuild
 	docker run --rm --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-dist-8
 	docker run --rm --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-dist-10
 	docker run --rm --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-dist-11
 
+jartest: jarbuild
 	docker run --rm --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-jar-8
 	docker run --rm --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-jar-10
 	docker run --rm --env-file test.env -v `pwd`/truststore.jts:/app/truststore.jts test-jar-11
-
-build: distbuild jarbuild
 
 distbuild: dist-8 dist-10 dist-11
 
