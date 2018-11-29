@@ -5,7 +5,6 @@ Docker image med:
 - oracle klient
 - python 3.6
 - gcc-c++ compiler
-- python-snappy
 
 ## For å bygge imaget må man:
 Laste ned:
