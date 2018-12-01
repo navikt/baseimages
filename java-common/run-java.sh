@@ -25,6 +25,7 @@ then
     ${DEFAULT_JVM_OPTS} \
     ${JAVA_OPTS} \
     -server \
+    -classpath \
     ${CLASSPATH} \
     ${MAIN_CLASS} \
     ${RUNTIME_OPTS} \
