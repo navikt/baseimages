@@ -1,0 +1,4 @@
+ARG BASEIMAGE_VERSION
+FROM navikt/java:$BASEIMAGE_VERSION
+
+COPY build/classes/java/main WEB-INF/classes
