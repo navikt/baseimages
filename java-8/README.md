@@ -30,26 +30,6 @@ ENV APP_JAR=my-awesome.jar
 COPY target/my-awesome.jar .
 ```
 
-### Using gradle?
-
-You can use `gradle installDist` by making sure the startup script is
-copied into the docker container as `/app/bin/app`. Here's an example:
-
-```
-FROM navikt/java:8
-
-COPY build/install/myapp/bin/myapp bin/app
-COPY build/install/myapp/lib ./lib/
-```
-
-If you want to use another name for your file, set it using `APP_BINARY`:
-
-```Dockerfile
-FROM navikt/java:8
-ENV APP_BINARY=myapp
-COPY build/install/myapp/ .
-```
-
 ### Using exploded WAR?
 
 Supply the name of your main class as an environment variable called
