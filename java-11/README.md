@@ -8,8 +8,7 @@ We support three (four) ways of running your app:
 
 1. A fat jar called `app.jar`
 2. An exploded war
-3. Startup script generated using Maven Assembly og Gradle's `installDist`
-4. Custom run script
+3. Custom run script
 
 Create a `Dockerfile` containing:
 
@@ -62,8 +61,7 @@ fi
 ```
 ### Run script
 
-As mentioned above the baseimage defaults to three ways of running
-a java app. If none of these suits you, you can create a custom run-script
+If none of the other ways of running an app suits you, you can create a custom run-script
 at `/run-java.sh`. Be sure to include the different environment variables
 `JAVA_OPTS`, `DEFAULT_JVM_OPTS` and `RUNTIME_OPTS` to get all the goodies 
 that the baseimage sets up for you.
