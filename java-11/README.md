@@ -8,8 +8,7 @@ We support three (four) ways of running your app:
 
 1. A fat jar called `app.jar`
 2. An exploded war
-3. Startup script generated using Maven Assembly og Gradle's `installDist`
-4. Custom run script
+3. Custom run script
 
 Create a `Dockerfile` containing:
 
@@ -28,26 +27,6 @@ If you want to use another name for your file, set it using `APP_JAR`:
 FROM navikt/java:11
 ENV APP_JAR=my-awesome.jar
 COPY target/my-awesome.jar .
-```
-
-### Using gradle?
-
-You can use `gradle installDist` by making sure the startup script is
-copied into the docker container as `/app/bin/app`. Here's an example:
-
-```
-FROM navikt/java:11
-
-COPY build/install/myapp/bin/myapp bin/app
-COPY build/install/myapp/lib ./lib/
-```
-
-If you want to use another name for your file, set it using `APP_BINARY`:
-
-```Dockerfile
-FROM navikt/java:11
-ENV APP_BINARY=myapp
-COPY build/install/myapp/ .
 ```
 
 ### Using exploded WAR?
@@ -82,8 +61,7 @@ fi
 ```
 ### Run script
 
-As mentioned above the baseimage defaults to three ways of running
-a java app. If none of these suits you, you can create a custom run-script
+If none of the other ways of running an app suits you, you can create a custom run-script
 at `/run-java.sh`. Be sure to include the different environment variables
 `JAVA_OPTS`, `DEFAULT_JVM_OPTS` and `RUNTIME_OPTS` to get all the goodies 
 that the baseimage sets up for you.
@@ -99,6 +77,11 @@ We highly recommend that you write your app so that you don't need this feature.
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+
+## 2018-12-18
+
+### Removed
+- Removed support for app binaries produced by gradle/maven
 
 ## 2018-11-01
 
