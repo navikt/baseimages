@@ -1,7 +1,7 @@
 
-.PHONY: all java-common java-8 java-8-appdynamics java-10 java-10-appdynamics java-11
+.PHONY: all java-common java-8 java-8-appdynamics java-10 java-10-appdynamics java-11 java-11-appdynamics
 
-all: java-8 java-8-appdynamics java-10 java-10-appdynamics java-11
+all: java-8 java-8-appdynamics java-10 java-10-appdynamics java-11 java-11-appdynamics
 
 java-common:
 	docker build -t navikt/java:common java-common
@@ -23,4 +23,7 @@ java-10-appdynamics: java-common
 java-11: java-common
 	docker pull openjdk:11-jdk-slim
 	docker build -t navikt/java:11 java-11
+java-11-appdynamics: java-common
+	docker pull openjdk:11-jdk-slim
+	docker build -t navikt/java:11-appdynamics java-11/appdynamics
 
