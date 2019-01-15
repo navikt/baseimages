@@ -44,27 +44,11 @@ You can add custom behavior to your container by copying `.sh` files
 to the `/init-scripts` dir. The files are sourced which means that
 you can export environment variables or extend the existing ones like `JAVA_OPTS`.
 
-For example adding support for AppDynamics:
-
-```bash
-# copy this into your container as
-# /init-scripts/10-appdynamics.sh (example)
-
-if test -r "/opt/appdynamics/agent.jar";
-then
-    JAVA_OPTS="${JAVA_OPTS} -javaagent:/opt/appdynamics/agent.jar"
-    JAVA_OPTS="${JAVA_OPTS} -Dappdynamics.agent.applicationName=my_app"
-    JAVA_OPTS="${JAVA_OPTS} -Dappdynamics.agent.nodeName=prod-${HOSTNAME}"
-    JAVA_OPTS="${JAVA_OPTS} -Dappdynamics.agent.tierName=prod-my_app"
-    export JAVA_OPTS
-fi
-```
-
 ### Run script
 
 If none of the other ways of running an app suits you, you can create a custom run-script
 at `/run-java.sh`. Be sure to include the different environment variables
-`JAVA_OPTS`, `DEFAULT_JVM_OPTS` and `RUNTIME_OPTS` to get all the goodies 
+`JAVA_OPTS`, `DEFAULT_JVM_OPTS` and `RUNTIME_OPTS` to get all the goodies
 that the baseimage sets up for you.
 
 ```bash
@@ -95,7 +79,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 - Option to specify another name for `app.jar` and `bin/app`
 
 ### Fixed
-- Runtime args are now passed on to app 
+- Runtime args are now passed on to app
 
 ## 2018-10-20
 
