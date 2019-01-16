@@ -8,11 +8,45 @@ Se README for Java 11 for general usage.
 
 ## Configuration of AppDynamics
 
+### Application name
 AppDynamics will automatically report itself by using the value of the
-environment variable `APP_NAME` as the Application name.
+environment variable `APPD_NAME` as the Application name.
 
-To use a different Application name in AppDynamics, the environment variable
-`APPD_NAME` can be set in your Dockerfile.
+```
+ENV APPD_NAME=my_app
+```
+
+The most generic way use this is to forward what NAIS injects as `APP_NAME`
+by adding the following to your Dockerfile:
+
+```
+ENV APPD_NAME=APP_NAME
+```
+
+The init-script will attempt to resolve the value of APPD_NAME as long as it
+references another environment variable.
+
+### Tier
+
+Tier will by default be the same as `APPD_NAME`. You can override this by
+setting the `APPD_TIER`, for example:
+
+```
+ENV APPD_TIER=backend
+```
+
+* If you want to use dynamic values, you'll have to move it to a separate
+  init-script that runs before `10-appdynamics.sh`.
+
+### Hostname
+
+You can also override the hostname by setting `APPD_HOSTNAME`, for example:
+
+```
+export APPD_HOSTNAME="$FASIT_ENVIRONMENT_NAME-$HOSTNAME"
+```
+
+As the hostname can't be static, it must be set with a init-script.
 
 ### Aggregating different tiers as one application
 
