@@ -8,7 +8,7 @@ Se README for Java 11 for general usage.
 
 ## Configuration of AppDynamics
 
-To enable AppDynamics you must set the environment variable `APPD_ENABLE` to
+To enable AppDynamics you must set the environment variable `APPD_ENABLED` to
 true. The easiest is to set this in your Dockerfile:
 
 ```
@@ -17,8 +17,8 @@ ENV APPD_ENABLED=true
 
 ### Application name
 
-If APPD_MODE is set to auto AppDynamics will automatically report the application
-by using the value of the environment variable `APP_NAME`.
+If `APPD_ENABLED` is set to true, AppDynamics will automatically report the
+application by using the value of the environment variable `APP_NAME`.
 
 You can override by setting `APPD_NAME` explicitly. You can either set it to an
 hardcoded value in your Dockerfile, or add a script for dynamically creating
