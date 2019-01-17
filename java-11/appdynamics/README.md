@@ -8,45 +8,33 @@ Se README for Java 11 for general usage.
 
 ## Configuration of AppDynamics
 
+To enable AppDynamics you must set the environment variable `APPD_ENABLE` to
+true. The easiest is to set this in your Dockerfile:
+
+```
+ENV APPD_ENABLED=true
+```
+
 ### Application name
-AppDynamics will automatically report itself by using the value of the
-environment variable `APPD_NAME` as the Application name.
+
+If APPD_MODE is set to auto AppDynamics will automatically report the application
+by using the value of the environment variable `APP_NAME`.
+
+You can override by setting `APPD_NAME` explicitly. You can either set it to an
+hardcoded value in your Dockerfile, or add a script for dynamically creating
+a value.
+
+Make sure the script executes before `10-appdynamics.sh` by giving it a lower
+prefixed number. Like 9.
 
 ```
-ENV APPD_NAME=my_app
-```
+# Example 9-appdynamics-vars.sh
+#!/usr/bin/env bash
 
-The most generic way use this is to forward what NAIS injects as `APP_NAME`
-by adding the following to your Dockerfile:
-
-```
-ENV APPD_NAME=APP_NAME
-```
-
-The init-script will attempt to resolve the value of APPD_NAME as long as it
-references another environment variable.
-
-### Tier
-
-Tier will by default be the same as `APPD_NAME`. You can override this by
-setting the `APPD_TIER`, for example:
-
-```
-ENV APPD_TIER=backend
-```
-
-* If you want to use dynamic values, you'll have to move it to a separate
-  init-script that runs before `10-appdynamics.sh`.
-
-### Hostname
-
-You can also override the hostname by setting `APPD_HOSTNAME`, for example:
-
-```
+export APPD_NAME="my-prefix-${APP_NAME}"
+export APPD_TIER=backend
 export APPD_HOSTNAME="$FASIT_ENVIRONMENT_NAME-$HOSTNAME"
 ```
-
-As the hostname can't be static, it must be set with a init-script.
 
 ### Aggregating different tiers as one application
 
@@ -58,13 +46,13 @@ service a unique value for `APPD_TIER`.
 
 F.ex:
 ```
-# Dockerfile for Service 1
-ENV APPD_NAME=soknad
-ENV APPD_TIER=frontend
+# Service 1
+APPD_NAME=soknad
+APPD_TIER=frontend
 
-# Dockerfile for Service 2
-ENV APPD_NAME=soknad
-ENV APPD_TIER=backend
+# Service 2
+APPD_NAME=soknad
+APPD_TIER=backend
 ```
 
 # Changelog
