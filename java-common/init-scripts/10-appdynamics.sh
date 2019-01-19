@@ -1,7 +1,7 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 if [ -r "/opt/appdynamics/javaagent.jar" ] &&
-    [ "${APPD_ENABLED}" == "true" ] &&
+    "${APPD_ENABLED}" == "true" &&
     ([ -n "${APP_NAME}" ] || [ -n "${APPD_NAME}" ])
 then
     APPD_NAME=${APPD_NAME:-$APP_NAME}
