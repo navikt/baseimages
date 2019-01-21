@@ -9,10 +9,22 @@ Se README for Java 10 for general usage.
 ## Configuration of AppDynamics
 
 To enable AppDynamics you must set the environment variable `APPD_ENABLED` to
-true. The easiest is to set this in your Dockerfile:
+true. This can be done in your Dockerfile:
 
 ```
 ENV APPD_ENABLED=true
+```
+
+You must also set `APPDYNAMICS_CONTROLLER_HOST_NAME`. It exists as
+a Fasit property by the name `appdynamics`.
+
+Add the following to your naisd.yml
+
+```
+fasitResources:
+  used:
+  - alias: appdynamics
+    resourceType: applicationproperties
 ```
 
 ### Application name
