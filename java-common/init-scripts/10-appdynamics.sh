@@ -14,5 +14,3 @@ then
     JAVA_OPTS="${JAVA_OPTS} -Dappdynamics.agent.tierName=${APPD_TIER}"
     export JAVA_OPTS
 fi
-
-echo $JAVA_OPTS
