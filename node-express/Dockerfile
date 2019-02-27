@@ -7,7 +7,7 @@ COPY --from=navikt-common /entrypoint.sh /entrypoint.sh
 COPY --from=navikt-common /dumb-init /dumb-init
 COPY run-node.sh /run-script.sh
 
-RUN chmod +x /entrypoint.sh
+RUN chmod +x /entrypoint.sh /run-script.sh
 
 RUN mkdir -p /var/server
 
