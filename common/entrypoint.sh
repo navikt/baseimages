@@ -11,4 +11,9 @@ else
     echo "/init-scripts does not exist, skipping startup scripts"
 fi
 
-exec $@
+if test -e /run-script.sh;
+then
+	exec /run-script.sh $@
+else
+    echo "no run-script.sh provided. doing nothing"
+fi
