@@ -35,8 +35,10 @@ spec:
     enabled: true
 ```
 
+Du finner en oversikt over tag's på [hub.docker.com](https://hub.docker.com/r/navikt/secure-redis/tags).
 
-## New version?
+
+## Ny versjon
 
 ```
 docker build -t navikt/secure-redis:<redis-version>-alpine-<update-version> .
