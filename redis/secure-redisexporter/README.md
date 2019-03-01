@@ -12,7 +12,7 @@ Filen som opprettes i Vault må hete `redis.env` og inneholde `export REDIS_PASS
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: <redis-instance>
+  name: <appname>-redisexporter
   namespace: <namespace>
   labels:
     team: <team>
