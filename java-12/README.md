@@ -65,6 +65,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 ## 2019-04-26
 
+### Changed
+- Dockerfile and appdynamics/Dockerfile: from openjdk:11-jdk-slim to adoptopenjdk/openjdk12:slim
+- References to java 11 is changed to java 12
 ### Added
 - Initial commit based on base image for java 11 where last commit was 5b81935c (2019-01-21)
 

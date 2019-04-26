@@ -1,10 +1,10 @@
-NAIS Java 11 with AppDynamics baseimage
+NAIS Java 12 with AppDynamics baseimage
 =======================================
 
 Basic Usage
 ---------------------
 
-Se README for Java 11 for general usage.
+Se README for Java 12 for general usage.
 
 ## Configuration of AppDynamics
 
