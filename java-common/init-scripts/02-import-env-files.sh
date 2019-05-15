@@ -18,10 +18,7 @@ then
                 echo "- (warn) exporting contents of $FILE which is not formatted as KEY=VALUE"
             fi
 
-            export "$_key"="$_val"
-
-            # more advanced alternative which also strips any quotes around var values:
-            #export "$_key"="$(echo "$_val"|sed -e "s/^['\"]//" -e "s/['\"]$//")"
+            export "$_key"="$(echo "$_val"|sed -e "s/^['\"]//" -e "s/['\"]$//")"
         done
         IFS=$_oldIFS
     done
