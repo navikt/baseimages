@@ -1,5 +1,5 @@
 FROM navikt/common:0.1 AS navikt-common
-FROM node:9-alpine
+FROM node:12.2.0
 ENV NODE_PATH=/usr/local/lib/node_modules
 
 COPY --from=navikt-common /init-scripts /init-scripts
