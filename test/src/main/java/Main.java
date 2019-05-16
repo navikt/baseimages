@@ -27,6 +27,7 @@ public class Main {
 
         testThatTruststoreIsInjected(env, props);
         testThatHttpProxyIsInjected(env, props);
+        testThatVaultSecretsAreInjected(env);
 
         System.out.println("Test OK");
     }
@@ -58,5 +59,15 @@ public class Main {
         test(props.getProperty("http.proxyPort").equals("1234"));
         test(props.getProperty("https.proxyPort").equals("1234"));
         test(props.getProperty("http.nonProxyHosts").equals("host1|host2|*.wildcard.local|*.local|foo"));
+    }
+
+    private static void testThatVaultSecretsAreInjected(Map<String,String> env) {
+        test(env.get("SECRET1").equals("secret1"));
+        test(env.get("SECRET2").equals("secret number two"));
+        test(env.get("SECRET3").equals("secret=number three"));
+        test(env.get("SECRET4").equals("secret number four"));
+        test(env.get("SECRET5").equals("secret number five"));
+        test(env.get("SECRET6").equals("\"Secret with literal quotes included\""));
+        test(env.get("SECRET7").equals("SECRET7"));  // default for invalid env-entry w/missing value
     }
 }
