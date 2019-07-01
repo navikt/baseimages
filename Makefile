@@ -1,7 +1,7 @@
 
-.PHONY: all java-common java-8 java-8-appdynamics java-10 java-10-appdynamics java-11 java-11-appdynamics java-12 java-12-appdynamics common node-express
+.PHONY: all java-common java-8 java-8-appdynamics java-10 java-10-appdynamics java-11 java-11-appdynamics java-12 java-12-appdynamics wildfly-17 common node-express
 
-all: java-8 java-8-appdynamics java-10 java-10-appdynamics java-11 java-11-appdynamics java-12 java-12-appdynamics
+all: java-8 java-8-appdynamics java-10 java-10-appdynamics java-11 java-11-appdynamics java-12 java-12-appdynamics wildfly-17
 
 java-common:
 	docker build -t navikt/java:common java-common
@@ -33,6 +33,9 @@ java-12: java-common
 java-12-appdynamics: java-common
 	docker pull adoptopenjdk/openjdk12:slim
 	docker build -t navikt/java:12-appdynamics java-12/appdynamics
+
+wildfly-17:
+	docker build -t navikt/wildfly:17 wildfly-17
 
 common:
 	docker build -t navikt/common:0.1 common

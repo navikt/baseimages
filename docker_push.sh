@@ -10,3 +10,4 @@ docker push navikt/java:11
 docker push navikt/java:11-appdynamics
 docker push navikt/java:12
 docker push navikt/java:12-appdynamics
+docker push navikt/wildfly:17
