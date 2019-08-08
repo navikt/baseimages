@@ -14,6 +14,9 @@ fi
 if test -e /run-script.sh;
 then
 	exec /run-script.sh $@
-else
-    echo "no run-script.sh provided. doing nothing"
 fi
+
+# Run CMDs from Dockerfile directly
+exec "$@"
+
+echo "no run-script.sh or CMD provided. doing nothing"
