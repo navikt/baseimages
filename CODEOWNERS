@@ -1,2 +1,3 @@
-*               @navikt/baseimage
-/node-express/  @navikt/team-soknad
+*                          @navikt/baseimage
+/node-express-9/           @navikt/team-soknad
+/node-express-12/          @navikt/team-soknad

@@ -1,5 +1,5 @@
 
-.PHONY: all java-common java-8 java-8-appdynamics java-10 java-10-appdynamics java-11 java-11-appdynamics java-12 java-12-appdynamics wildfly-17 common node-express
+.PHONY: all java-common java-8 java-8-appdynamics java-10 java-10-appdynamics java-11 java-11-appdynamics java-12 java-12-appdynamics wildfly-17 common node-express-9 node-express-12
 
 all: java-8 java-8-appdynamics java-10 java-10-appdynamics java-11 java-11-appdynamics java-12 java-12-appdynamics wildfly-17
 
@@ -40,5 +40,7 @@ wildfly-17:
 common:
 	docker build -t navikt/common:0.1 common
 
-node-express: common
-	docker build -t navikt/node-express:9-common node-express
+node-express-9: common
+	docker build -t navikt/node-express:9-common node-express-9
+node-express-12: common
+	docker build -t navikt/node-express:12-common node-express-12
