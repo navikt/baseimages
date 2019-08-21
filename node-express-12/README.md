@@ -37,8 +37,3 @@ Vi bruker Docker Automated Builds for å release ny versjon. Dette gjøres ved �
 git tag -m "<hvorfor ny tag/release?>" node-express-<version>
 git push --tags
 ```
-
-
-## Henvendelser
-
-Interne henvendelser kan sendes via Slack i kanalen #teamsoknad.
