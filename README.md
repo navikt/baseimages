@@ -8,6 +8,7 @@ Available images:
 * JDK 10 ([`java-10`](java-10/))
 * JDK 11 ([`java-11`](java-11/))
 * JDK 12 ([`java-12`](java-12/))
+* JDK 13 ([`java-13`](java-13/))
 * Node 9 with Express 4 ([`node-express-9`](node-express-9/))
 * Node 12 with Express 4 ([`node-express-12`](node-express-12/))
 
