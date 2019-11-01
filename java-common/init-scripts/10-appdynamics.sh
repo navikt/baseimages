@@ -2,9 +2,9 @@
 
 if [ -r "/opt/appdynamics/javaagent.jar" ] &&
     "${APPD_ENABLED}" == "true" &&
-    ([ -n "${APP_NAME}" ] || [ -n "${APPD_NAME}" ])
+    ([ -n "${APP_NAME}" ] || [ -n "${APPD_NAME}" ] || [ -n "${NAIS_APP_NAME}" ])
 then
-    APPD_NAME=${APPD_NAME:-$APP_NAME}
+    APPD_NAME=${APPD_NAME:-$APP_NAME:-$NAIS_APP_NAME}
     APPD_HOSTNAME="${APPD_HOSTNAME:-$HOSTNAME}"
     APPD_TIER="${APPD_TIER:-$APPD_NAME}"
 
