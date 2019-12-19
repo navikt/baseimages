@@ -13,6 +13,8 @@ RUN mkdir -p /var/server
 
 WORKDIR /var/server
 
-RUN npm install -g express@4.16.3
+RUN npm config set unsafe-perm true \
+    && npm install -g express@4.16.3 \
+    && npm config set unsafe-perm false
 
 ENTRYPOINT ["/dumb-init", "--", "/entrypoint.sh"]
