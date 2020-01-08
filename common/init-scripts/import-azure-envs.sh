@@ -6,9 +6,10 @@ echo "Attempting to export Azure AD from $DIR if it exists"
 
 if test -d $DIR;
 then
-    for FILE in $DIR/
+    for FILE in `ls $DIR`
     do
-       echo "- exporting $FILE"
-       export $FILE=`cat $FILE`
+       KEY="AZURE_`echo $FILE | tr '[:lower:]' '[:upper:]'`"
+       echo "- exporting $KEY"
+       export $KEY=`cat $DIR/$FILE`
     done
 fi
