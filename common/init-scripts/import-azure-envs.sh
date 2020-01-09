@@ -1,6 +1,6 @@
 #!/bin/env sh
 
-DIR=/var/run/secrets/nais.io/azure
+DIR=/var/run/secrets/nais.io/azuread
 
 echo "Attempting to export Azure AD from $DIR if it exists"
 
