@@ -9,19 +9,13 @@ Se README for Java 8 for general usage.
 ## Configuration of AppDynamics
 
 Basic appdynamics config.
-This can be done in your Dockerfile:
+They are available in Vault path: apikey/appdynamics
 
 ```
-ENV APPD_ENABLED true
-ENV APPDYNAMICS_AGENT_ACCOUNT_NAME {PROD | NON-PROD}
-ENV APPDYNAMICS_CONTROLLER_PORT 443
-ENV APPDYNAMICS_CONTROLLER_SSL_ENABLED true
-```
-
-You must also set host and access key, store them preferably in Vault.
-They exist as a Fasit property by the name `appdynamics`.
-
- ```
+APPD_ENABLED 
+APPDYNAMICS_AGENT_ACCOUNT_NAME 
+APPDYNAMICS_CONTROLLER_PORT 
+APPDYNAMICS_CONTROLLER_SSL_ENABLED
 APPDYNAMICS_CONTROLLER_HOST_NAME
 APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY
 ```
