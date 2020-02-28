@@ -8,23 +8,16 @@ Se README for Java 8 for general usage.
 
 ## Configuration of AppDynamics
 
-To enable AppDynamics you must set the environment variable `APPD_ENABLED` to
-true. This can be done in your Dockerfile:
+Basic appdynamics config.
+They are available in Vault path: apikey/appdynamics
 
 ```
-ENV APPD_ENABLED=true
-```
-
-You must also set `APPDYNAMICS_CONTROLLER_HOST_NAME`. It exists as
-a Fasit property by the name `appdynamics`.
-
-Add the following to your naisd.yml
-
-```
-fasitResources:
-  used:
-  - alias: appdynamics
-    resourceType: applicationproperties
+APPD_ENABLED 
+APPDYNAMICS_AGENT_ACCOUNT_NAME 
+APPDYNAMICS_CONTROLLER_PORT 
+APPDYNAMICS_CONTROLLER_SSL_ENABLED
+APPDYNAMICS_CONTROLLER_HOST_NAME
+APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY
 ```
 
 ### Application name
@@ -45,7 +38,6 @@ prefixed number. Like 9.
 
 export APPD_NAME="my-prefix-${APP_NAME}"
 export APPD_TIER=backend
-export APPD_HOSTNAME="$FASIT_ENVIRONMENT_NAME-$HOSTNAME"
 ```
 
 ### Aggregating different tiers as one application
