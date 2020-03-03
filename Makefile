@@ -7,10 +7,10 @@ java-common:
 	docker build -t navikt/java:common java-common
 
 java-8: java-common
-	docker pull openjdk:8u181-jdk
+	docker pull openjdk:8u242-jdk
 	docker build -t navikt/java:8 java-8
 java-8-appdynamics: java-common
-	docker pull openjdk:8u181-jdk
+	docker pull openjdk:8u242-jdk
 	docker build -t navikt/java:8-appdynamics java-8/appdynamics
 
 java-10: java-common
