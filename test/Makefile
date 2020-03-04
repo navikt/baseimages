@@ -21,7 +21,7 @@ jarbuild: jar-8 jar-10 jar-11
 warbuild: war-8 war-10 war-11
 
 gradlejar:
-	docker run --rm -it -v $(CURDIR):/usr/src -w /usr/src openjdk:8u181-jdk ./gradlew build
+	docker run --rm -it -v $(CURDIR):/usr/src -w /usr/src openjdk:8u242-jdk ./gradlew build
 
 jar-%: gradlejar
 	docker build -t test-$@ --build-arg BASEIMAGE_VERSION=$* -f Dockerfile-jar .

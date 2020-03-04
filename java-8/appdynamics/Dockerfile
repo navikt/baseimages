@@ -14,7 +14,7 @@ RUN echo "${APPD_AGENT_SHA256} *AppServerAgent-${APPD_AGENT_VERSION}.zip" >> app
 
 FROM navikt/java:common AS java-common
 
-FROM openjdk:8u181-jdk
+FROM openjdk:8u242-jdk
 COPY --from=builder /tmp /opt/appdynamics
 COPY --from=java-common /init-scripts /init-scripts
 COPY --from=java-common /entrypoint.sh /entrypoint.sh
@@ -28,7 +28,7 @@ ENV LANG="nb_NO.UTF-8"
 ENV TZ="Europe/Oslo"
 
 # Please see https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits
-ENV DEFAULT_JVM_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
+ENV DEFAULT_JVM_OPTS="-XX:+UseContainerSupport"
 ENV APP_BINARY=app
 ENV APP_JAR=app.jar
 ENV MAIN_CLASS="Main"

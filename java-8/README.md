@@ -63,6 +63,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
+## 2020-03-02
+
+### Changed
+- Java version changed from OpenJDK `8u181` to OpenJDK `8u242`
+
 ## 2018-12-18
 
 ### Removed
