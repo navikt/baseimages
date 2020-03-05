@@ -1,7 +1,7 @@
 FROM debian AS builder
 
-ENV APPD_AGENT_VERSION="4.5.10.25916"
-ENV APPD_AGENT_SHA256="713d8b26b24f201d16de84a9b8caa7df65b5ebeefa2d051d7d7bab4e9fb4f466"
+ENV APPD_AGENT_VERSION="4.5.19.29348"
+ENV APPD_AGENT_SHA256="245fc140fdc619a5375012651f94ab4711a64b6e5ab9908e35fef56f082882c7"
 
 RUN apt-get update && apt-get install -y --no-install-recommends  unzip \
 	&& rm -rf /var/lib/apt/lists/*
