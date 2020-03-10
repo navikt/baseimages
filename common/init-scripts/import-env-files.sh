@@ -2,7 +2,7 @@
 
 if test -d /var/run/secrets/nais.io/vault;
 then
-    find /var/run/secrets/nais.io/vault -type f -name "*.env" | while read -r FILE
+    for FILE in $(find /var/run/secrets/nais.io/vault -maxdepth 1 -name "*.env")
     do
         _oldIFS=$IFS
         IFS='
