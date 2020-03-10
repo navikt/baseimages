@@ -1,6 +1,6 @@
 #!/bin/env sh
 
-if test -d /var/run/secrets/nais.io/vault;
+if test -f /var/run/secrets/nais.io/vault/*.env;
 then
     for FILE in /var/run/secrets/nais.io/vault/*.env
     do
