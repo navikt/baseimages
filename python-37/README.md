@@ -1,4 +1,4 @@
-# Python 3.8 Docker image
+# Python 3.7 Docker image
 
 ## Docker image containing
 
