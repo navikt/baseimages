@@ -3,7 +3,7 @@
 ## Docker image containing
 
 - navikt/common
-- Python 3.7-slim
+- Python 3.7-slim-stretch
 
 ## Basic Usage
 
