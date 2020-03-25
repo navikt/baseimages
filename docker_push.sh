@@ -15,5 +15,5 @@ docker push navikt/java:13-appdynamics
 docker push navikt/wildfly:17
 docker push navikt/node-express:9-common
 docker push navikt/node-express:12.2.0-alpine
-docker push navikt/python:3.8
 docker push navikt/python:3.7
+docker push navikt/python:3.8
