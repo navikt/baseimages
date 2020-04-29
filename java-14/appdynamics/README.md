@@ -1,10 +1,10 @@
-NAIS Java 13 with AppDynamics baseimage
+NAIS Java 14 with AppDynamics baseimage
 =======================================
 
 Basic Usage
 ---------------------
 
-Se README for Java 13 for general usage.
+Se README for Java 14 for general usage.
 
 ## Configuration of AppDynamics
 
