@@ -1,4 +1,4 @@
-NAIS Java 13 baseimage
+NAIS Java 14 baseimage
 =====================
 
 Basic Usage
