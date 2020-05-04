@@ -1,4 +1,4 @@
-    NAIS baseimages
+NAIS baseimages
 ================
 
 This project contains base docker images for use with the NAIS platform.
