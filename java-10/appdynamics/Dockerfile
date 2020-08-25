@@ -1,16 +1,17 @@
 FROM debian AS builder
 
-ENV APPD_AGENT_VERSION="4.5.19.29348"
-ENV APPD_AGENT_SHA256="245fc140fdc619a5375012651f94ab4711a64b6e5ab9908e35fef56f082882c7"
+ENV APPD_AGENT_VERSION="20.8.0.30686"
+ENV APPD_AGENT_SHA256="5112c2f598be0c75f794a264b3a218337a00bfa3ec2b8edb7da4a617547f0267"
 
 RUN apt-get update && apt-get install -y --no-install-recommends  unzip \
 	&& rm -rf /var/lib/apt/lists/*
 
-COPY AppServerAgent-${APPD_AGENT_VERSION}.zip /
-RUN echo "${APPD_AGENT_SHA256} *AppServerAgent-${APPD_AGENT_VERSION}.zip" >> appd_checksum \
+COPY AppServerAgent-1.8-${APPD_AGENT_VERSION}.zip NAV-SDK-KTOR.jar /
+RUN echo "${APPD_AGENT_SHA256} *AppServerAgent-1.8-${APPD_AGENT_VERSION}.zip" >> appd_checksum \
     && sha256sum -c appd_checksum \
     && rm appd_checksum \
-    && unzip -oq AppServerAgent-${APPD_AGENT_VERSION}.zip -d /tmp
+    && unzip -oq AppServerAgent-1.8-${APPD_AGENT_VERSION}.zip -d /tmp \
+    && cp NAV-SDK-KTOR.jar /tmp/ver${APPD_AGENT_VERSION}/sdk-plugins/
 
 FROM navikt/java:common AS java-common
 
