@@ -1,0 +1,23 @@
+name: Build and deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@v2
+
+      - name: Build all images
+        run: make -j 5 && make -w -C test
+
+      - name: Deploy them to Docker Hub
+        run: docker_push.sh
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        
