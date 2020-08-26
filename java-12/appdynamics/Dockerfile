@@ -15,7 +15,6 @@ RUN echo "${APPD_AGENT_SHA256} *AppServerAgent-${APPD_AGENT_VERSION}.zip" >> app
 FROM navikt/java:common AS java-common
 
 FROM adoptopenjdk/openjdk12:slim
-COPY --from=builder /tmp /opt/appdynamics
 
 COPY --from=builder /tmp /opt/appdynamics
 COPY --from=java-common /init-scripts /init-scripts
