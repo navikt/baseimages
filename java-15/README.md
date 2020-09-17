@@ -1,4 +1,4 @@
-NAIS Java 14 baseimage
+NAIS Java 15 baseimage
 =====================
 
 Basic Usage
@@ -17,14 +17,14 @@ The simplest way of running your app is to create a far jar and copy it into you
 Since the default working directory is `/app`, there's no need to specify the path.
 
 ```Dockerfile
-FROM navikt/java:14
+FROM navikt/java:15
 COPY target/my-awesome.jar app.jar
 ```
 
 If you want to use another name for your file, set it using `APP_JAR`:
 
 ```Dockerfile
-FROM navikt/java:14
+FROM navikt/java:15
 ENV APP_JAR=my-awesome.jar
 COPY target/my-awesome.jar .
 ```
@@ -57,22 +57,3 @@ exec java ${DEFAULT_JVM_OPTS} ${JAVA_OPTS} -jar app.jar ${RUNTIME_OPTS} $@
 ```
 
 We highly recommend that you write your app so that you don't need this feature.
-
-# Changelog
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-
-## 2020-09-17
-
-### Changed
-- Dockerfile and appdynamics/Dockerfile: from openjdk:14.0.1-slim to openjdk:14.0.2-slim
-
-## 2020-04-29
-
-### Changed
-- Dockerfile and appdynamics/Dockerfile: from adoptopenjdk/openjdk13:slim to openjdk:14.0.1-slim 
-- References to java 13 is changed to java 14
-### Added
-- Initial commit based on base image for java 13 where last commit was 5f29b85f (2020-03-05)
-
