@@ -48,10 +48,11 @@ java-14-appdynamics: java-common
 	docker pull adoptopenjdk/openjdk14:slim
 	docker build -t navikt/java:14-appdynamics java-14/appdynamics
 java-15: java-common
-	docker pull adoptopenjdk/openjdk15:slim
+	docker pull openjdk:15-slim
 	docker build -t navikt/java:15 java-15
 java-15-appdynamics: java-common
-	docker pull adoptopenjdk/openjdk15:slim
+	docker pull openjdk:15-slim
+	docker build -t navikt/java:15-appdynamics java-15/appdynamics
 
 wildfly-17:
 	docker build -t navikt/wildfly:17 wildfly-17
