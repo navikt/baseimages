@@ -14,6 +14,8 @@ docker push navikt/java:13
 docker push navikt/java:13-appdynamics
 docker push navikt/java:14
 docker push navikt/java:14-appdynamics
+docker push navikt/java:15
+docker push navikt/java:15-appdynamics
 docker push navikt/wildfly:17
 docker push navikt/node-express:9-common
 docker push navikt/node-express:12.18-alpine
