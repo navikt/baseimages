@@ -61,11 +61,11 @@ common:
 	docker build -t navikt/common:0.1 common
 
 node-express-9: common
-	docker build -t navikt/node-express:9-common node-express-9
+	docker build --pull -t navikt/node-express:9-common node-express-9
 node-express-12: common
-	docker build -t navikt/node-express:12.18-alpine node-express-12
+	docker build --pull -t navikt/node-express:12.18-alpine node-express-12
 node-express-14: common
-	docker build -t navikt/node-express:14-alpine node-express-14
+	docker build --pull -t navikt/node-express:14-alpine node-express-14
 
 python-38: common
 	docker build -t navikt/python:3.8 python-38
