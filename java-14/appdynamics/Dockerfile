@@ -37,7 +37,7 @@ WORKDIR /app
 
 EXPOSE 8080
 
-RUN addgroup apprunner && adduser -S -G apprunner apprunner
+RUN groupadd -r apprunner && useradd -r -g apprunner apprunner
 USER apprunner
 
 ENTRYPOINT ["/dumb-init", "--", "/entrypoint.sh"]
