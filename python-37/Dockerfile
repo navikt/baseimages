@@ -11,4 +11,7 @@ RUN chmod +x /entrypoint.sh /run-script.sh
 ENV LANG=en_GB.UTF-8
 ENV TZ="Europe/Oslo"
 
+RUN groupadd -r apprunner && useradd -r -g apprunner apprunner
+USER apprunner
+
 ENTRYPOINT ["/dumb-init", "--", "/entrypoint.sh"]

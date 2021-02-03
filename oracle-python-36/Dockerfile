@@ -19,4 +19,7 @@ RUN yum install -y wget && \
     yum install -y python36 && \
     python3.6 -m ensurepip
 
+RUN groupadd -r apprunner && useradd -r -g apprunner apprunner
+USER apprunner
+
 CMD ["python3.6", "--version"]

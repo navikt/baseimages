@@ -17,4 +17,7 @@ RUN npm config set unsafe-perm true \
     && npm install -g express@4.17.1 \
     && npm config set unsafe-perm false
 
+RUN addgroup -S apprunner && adduser -S apprunner -G apprunner
+USER apprunner
+
 ENTRYPOINT ["/dumb-init", "--", "/entrypoint.sh"]
