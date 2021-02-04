@@ -18,6 +18,7 @@ RUN npm config set unsafe-perm true \
     && npm config set unsafe-perm false
 
 RUN addgroup -S apprunner && adduser -S apprunner -G apprunner
+RUN chown -R apprunner /var/server
 USER apprunner
 
 ENTRYPOINT ["/dumb-init", "--", "/entrypoint.sh"]
