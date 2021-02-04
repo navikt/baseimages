@@ -41,6 +41,7 @@ EXPOSE 8080
 RUN groupadd -r apprunner && useradd -r -g apprunner apprunner
 RUN chown -R apprunner /app
 RUN chown -R apprunner /init-scripts
+RUN chown -R apprunner /opt/appdynamics
 RUN chown apprunner /run-java.sh
 USER apprunner
 
