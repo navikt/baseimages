@@ -5,3 +5,4 @@ RUN chmod +x /dumb-init
 
 COPY init-scripts/ /init-scripts
 COPY entrypoint.sh /entrypoint.sh
+COPY setup-apprunner.sh /setup-apprunner.sh
