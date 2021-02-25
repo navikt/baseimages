@@ -4,6 +4,8 @@ FROM navikt/java:common AS java-common
 
 FROM openjdk:10-jdk-slim
 
+RUN umask o+r
+
 COPY --from=appdynamics /opt/appdynamics /opt/appdynamics
 COPY --from=java-common /init-scripts /init-scripts
 COPY --from=java-common /entrypoint.sh /entrypoint.sh

@@ -1,6 +1,8 @@
 FROM navikt/common:0.2 AS navikt-common
 FROM oraclelinux:7-slim
 
+RUN umask o+r
+
 ADD oracle-instantclient*.rpm /tmp/
 
 RUN yum install -y /tmp/oracle-instantclient*.rpm && \

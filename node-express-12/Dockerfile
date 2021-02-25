@@ -1,5 +1,8 @@
 FROM navikt/common:0.2 AS navikt-common
 FROM node:12-alpine
+
+RUN umask o+r
+
 ENV NODE_PATH=/usr/local/lib/node_modules
 
 COPY --from=navikt-common /init-scripts /init-scripts
