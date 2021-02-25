@@ -1,6 +1,8 @@
 FROM navikt/common:0.1 AS navikt-common
 FROM python:3.7-slim-stretch
 
+RUN umask o+r
+
 COPY --from=navikt-common /init-scripts /init-scripts
 COPY --from=navikt-common /entrypoint.sh /entrypoint.sh
 COPY --from=navikt-common /dumb-init /dumb-init

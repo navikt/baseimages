@@ -3,6 +3,9 @@ FROM appdynamics/java-agent:21.1.1 AS appdynamics
 FROM navikt/java:common AS java-common
 
 FROM openjdk:8u242-jdk
+
+RUN umask o+r
+
 COPY --from=appdynamics /opt/appdynamics /opt/appdynamics
 COPY --from=java-common /init-scripts /init-scripts
 COPY --from=java-common /entrypoint.sh /entrypoint.sh

@@ -1,5 +1,7 @@
 FROM oraclelinux:7-slim
 
+RUN umask o+r
+
 ADD oracle-instantclient*.rpm /tmp/
 
 RUN yum install -y /tmp/oracle-instantclient*.rpm && \
