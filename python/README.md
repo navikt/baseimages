@@ -1,9 +1,9 @@
-# Python 3.7 Docker image
+# Python Docker images
 
 ## Docker image containing
 
 - navikt/common
-- Python 3.7-slim-stretch
+- slim variant of the official Python image for given version
 
 ## Basic Usage
 
@@ -20,6 +20,6 @@ The simplest way of running your app is to create a script to start the applicat
 Since the default working directory is `/app`, there's no need to specify the path.
 
 ```Dockerfile
-FROM navikt/python:3.7
+FROM navikt/python:3.8
 COPY my-cool-app/ .
 ```
