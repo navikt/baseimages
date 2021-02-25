@@ -2,6 +2,8 @@ ARG python_version
 FROM navikt/common:0.2 AS navikt-common
 FROM python:${python_version}-slim
 
+RUN umask o+r
+
 COPY --from=navikt-common /init-scripts /init-scripts
 COPY --from=navikt-common /*.sh /
 COPY --from=navikt-common /dumb-init /dumb-init

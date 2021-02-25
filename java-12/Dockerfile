@@ -1,6 +1,8 @@
 FROM navikt/java:common AS java-common
 FROM adoptopenjdk/openjdk12:slim
 
+RUN umask o+r
+
 COPY --from=java-common /init-scripts /init-scripts
 COPY --from=java-common /entrypoint.sh /entrypoint.sh
 COPY --from=java-common /run-java.sh /run-java.sh
