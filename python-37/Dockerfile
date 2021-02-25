@@ -1,6 +1,5 @@
-ARG python_version
 FROM navikt/common:0.2 AS navikt-common
-FROM python:${python_version}-slim
+FROM python:3.7-slim-stretch
 
 RUN umask o+r
 
