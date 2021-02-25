@@ -1,3 +1,4 @@
+FROM navikt/common:0.2 AS navikt-common
 FROM oraclelinux:7-slim
 
 ADD oracle-instantclient*.rpm /tmp/
@@ -19,7 +20,9 @@ RUN yum install -y wget && \
     yum install -y python36 && \
     python3.6 -m ensurepip
 
-RUN groupadd -r apprunner && useradd -r -g apprunner apprunner
+COPY --from=navikt-common /*.sh /
+
+RUN /setup-apprunner.sh
 USER apprunner
 
 CMD ["python3.6", "--version"]
