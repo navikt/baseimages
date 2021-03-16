@@ -14,6 +14,7 @@ Available images:
 * JDK 16 ([`java-15`](java-16/))
 * Node 9 with Express 4 ([`node-express-9`](node-express-9/))
 * Node 12 with Express 4 ([`node-express-12`](node-express-12/))
+* Node 14 with Express 4 ([`node-express-14`](node-express-14/))
 
 ## Getting Started
 
