@@ -15,6 +15,7 @@ Available images:
 * Node 9 with Express 4 ([`node-express-9`](node-express-9/))
 * Node 12 with Express 4 ([`node-express-12`](node-express-12/))
 * Node 14 with Express 4 ([`node-express-14`](node-express-14/))
+* Python 3.7, 3.8 and 3.9 ([`python`](python/))
 
 ## Getting Started
 
