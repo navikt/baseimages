@@ -1,8 +1,7 @@
 Node express
 ============
 
-Enkel Docker image med Node og Express installert.
-
+Docker image med Node og Express installert.
 
 ## Hvordan bruke imaget
 
@@ -11,7 +10,6 @@ Enkel Docker image med Node og Express installert.
 ```
 docker run --volume $(PWD)./:/var/server navikt/node-express
 ```
-
 
 ### docker-compose
 
@@ -27,7 +25,6 @@ docker-express:
 ```
 
 Kjør så `docker-compose run node-express`
-
 
 ## Release av ny versjon
 

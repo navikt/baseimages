@@ -1,5 +1,6 @@
+ARG node_version
 FROM navikt/common:0.2 AS navikt-common
-FROM node:12-alpine
+FROM node:${node_version}-alpine
 
 RUN umask o+r
 
@@ -13,7 +14,7 @@ COPY run-node.sh /run-script.sh
 WORKDIR /var/server
 
 RUN npm config set unsafe-perm true \
-    && npm install -g express@4.17.1 \
+    && npm install -g express@4.16.3 \
     && npm config set unsafe-perm false
 
 RUN /setup-apprunner.sh /var/server
