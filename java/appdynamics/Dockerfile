@@ -1,8 +1,12 @@
+ARG java_version
+
+FROM appdynamics/java-agent:21.1.1 AS appdynamics
 FROM navikt/java:common AS java-common
-FROM openjdk:16-slim
+FROM openjdk:${java_version}-slim
 
 RUN umask o+r
 
+COPY --from=appdynamics /opt/appdynamics /opt/appdynamics
 COPY --from=java-common /init-scripts /init-scripts
 COPY --from=java-common /entrypoint.sh /entrypoint.sh
 COPY --from=java-common /run-java.sh /run-java.sh
@@ -14,6 +18,9 @@ RUN sed -i -e 's/# nb_NO.UTF-8 UTF-8/nb_NO.UTF-8 UTF-8/' /etc/locale.gen && loca
 ENV LC_ALL="nb_NO.UTF-8"
 ENV LANG="nb_NO.UTF-8"
 ENV TZ="Europe/Oslo"
+
+# Please see https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits
+ENV DEFAULT_JVM_OPTS="-XX:+UnlockExperimentalVMOptions"
 ENV APP_BINARY=app
 ENV APP_JAR=app.jar
 ENV MAIN_CLASS="Main"
@@ -26,6 +33,7 @@ EXPOSE 8080
 RUN groupadd -r apprunner && useradd -r -g apprunner apprunner
 RUN chown -R apprunner /app
 RUN chown -R apprunner /init-scripts
+RUN chown -R apprunner /opt/appdynamics
 RUN chown apprunner /run-java.sh
 USER apprunner
 

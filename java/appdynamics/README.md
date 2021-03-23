@@ -1,10 +1,10 @@
-NAIS Java 11 with AppDynamics baseimage
+NAIS Java with AppDynamics baseimage
 =======================================
 
 Basic Usage
 ---------------------
 
-Se README for Java 11 for general usage.
+Se README for Java for general usage.
 
 ## Configuration of AppDynamics
 
@@ -72,12 +72,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
-## 2019-01-15
-
-### Added
-- Added init-script that configures AppDynamics automatically
-
-## 2019-01-08
+## 2019-10-08
 
 ### Added
 - Initial version
