@@ -1,5 +1,6 @@
+ARG node_version
 FROM navikt/common:0.2 AS navikt-common
-FROM node:12-alpine
+FROM node:${node_version}-alpine
 
 RUN umask o+r
 
