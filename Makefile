@@ -7,9 +7,9 @@ java_targets = $(addprefix java-, $(JAVA_VERSIONS))
 NODE_VERSIONS = 9 12 14
 node_targets = $(addprefix node-, $(NODE_VERSIONS))
 
-.PHONY: all common $(java_targets) $(node_targets) $(python_targets) wildfly-17
+.PHONY: all common $(java_targets) java-8-fat $(node_targets) $(python_targets) wildfly-17
 
-all: $(java_targets) $(node_targets) $(python_targets) wildfly-17
+all: $(java_targets) java-8-fat $(node_targets) $(python_targets) wildfly-17
 
 wildfly-17:
 	docker build -t navikt/wildfly:17 wildfly-17
@@ -21,6 +21,11 @@ $(java_targets): java-%: common java/Dockerfile
 	docker pull openjdk:$(*)-slim
 	docker build -t navikt/java:$(*) --build-arg java_version=$(*) java
 	docker build -t navikt/java:$(*)-appdynamics --build-arg java_version=$(*) java/appdynamics
+
+# Some teams need Java 8 non-slim for some reason, handle it separately
+java-8-fat:
+	docker pull openjdk:8
+	docker build -t navikt/java:8-fat java/8-fat
 
 $(node_targets): node-%: common node-express/Dockerfile node-express
 	docker pull node:$(*)-alpine
