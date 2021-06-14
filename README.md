@@ -4,9 +4,9 @@ NAIS baseimages
 This project contains base docker images for use with the NAIS platform.
 
 Available images:
-* JDK 8 - 16 ([`java`](tree/master/java))/)) 
-* Node 9, 12 and 14 with Express 4 ([`node-express`](tree/master/node-express))
-* Python 3.7, 3.8 and 3.9 ([`python`](tree/master/python))
+* JDK 8 - 16 ([`java`](java)) 
+* Node 9, 12 and 14 with Express 4 ([`node-express`](node-express))
+* Python 3.7, 3.8 and 3.9 ([`python`](python))
 
 ## Getting Started
 
