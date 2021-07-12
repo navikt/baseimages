@@ -1,6 +1,6 @@
 ARG java_version
 
-FROM appdynamics/java-agent:21.1.1 AS appdynamics
+FROM appdynamics/java-agent:21.6.0 AS appdynamics
 FROM navikt/java:common AS java-common
 FROM openjdk:${java_version}-slim
 
