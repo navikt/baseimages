@@ -1,5 +1,5 @@
 ARG node_version
-FROM navikt/common:0.2 AS navikt-common
+FROM navikt/common:0.3 AS navikt-common
 FROM node:${node_version}-alpine
 
 RUN umask o+r

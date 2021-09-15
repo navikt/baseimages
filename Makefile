@@ -15,7 +15,7 @@ wildfly-17:
 	docker build -t navikt/wildfly:17 wildfly-17
 
 common:
-	docker build -t navikt/common:0.2 common
+	docker build -t navikt/common:0.3 common
 
 $(java_targets): java-%: common java/Dockerfile
 	docker pull openjdk:$(*)-slim
