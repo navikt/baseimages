@@ -11,11 +11,11 @@ mkdir -p "${home_dir}"
 
 if [ "${ID}" = "alpine" ]; then
   echo "Adding user and group with addgroup/adduser on alpine"
-  addgroup --system --gid 1069 apprunner
+  addgroup -S --gid 1069 apprunner
   adduser --system --uid 1069 --ingroup apprunner --home "${home_dir}" apprunner
 elif [ "$(command -v groupadd)" ]; then
   echo "Adding user and group with groupadd/useradd"
-  groupadd --system --gid 1069 apprunner
+  groupadd -S --gid 1069 apprunner
   useradd --system --home-dir "${home_dir}" --uid 1069 --gid apprunner apprunner
 else
   echo "Don't know how to add user/group!!!"
