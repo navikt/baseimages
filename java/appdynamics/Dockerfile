@@ -1,6 +1,8 @@
 ARG java_version
 
-FROM appdynamics/java-agent:21.6.0 AS appdynamics
+FROM appdynamics/java-agent:21.8.0 AS appdynamics
+RUN find /opt/appdynamics -type d -name argentoDynamicService -exec rm -rf {} +;
+
 FROM navikt/java:common AS java-common
 FROM openjdk:${java_version}-slim
 
