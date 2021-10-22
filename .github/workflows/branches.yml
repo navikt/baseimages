@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        lang: [python, java, node]
+        lang: [python, java, node, wildfly-17]
     steps:
       - name: Checkout latest code
         uses: actions/checkout@v2

@@ -17,7 +17,7 @@ wildfly-17:
 common:
 	docker build -t navikt/common:0.3 common
 
-java: $(java_targets)
+java: $(java_targets) java-8-fat
 $(java_targets): java-%: common java/Dockerfile
 	docker pull openjdk:$(*)-slim
 	docker build -t navikt/java:$(*) --build-arg java_version=$(*) java
