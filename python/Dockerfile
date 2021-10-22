@@ -1,5 +1,5 @@
 ARG python_version
-FROM navikt/common:0.2 AS navikt-common
+FROM navikt/common:0.3 AS navikt-common
 FROM python:${python_version}-slim
 
 RUN umask o+r
