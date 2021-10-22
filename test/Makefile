@@ -8,17 +8,15 @@ volumes = -v $(CURDIR)/truststore.jts:/app/truststore.jts \
 
 jartest: jarbuild
 	docker run --rm --env-file test.env $(volumes) test-jar-8
-	docker run --rm --env-file test.env $(volumes) test-jar-10
 	docker run --rm --env-file test.env $(volumes) test-jar-11
 
 wartest: warbuild
 	docker run --rm --env-file test.env $(volumes) test-war-8
-	docker run --rm --env-file test.env $(volumes) test-war-10
 	docker run --rm --env-file test.env $(volumes) test-war-11
 
-jarbuild: jar-8 jar-10 jar-11
+jarbuild: jar-8 jar-11
 
-warbuild: war-8 war-10 war-11
+warbuild: war-8 war-11
 
 gradlejar:
 	docker run --rm -v $(CURDIR):/usr/src -w /usr/src openjdk:8u242-jdk ./gradlew build
