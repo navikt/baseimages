@@ -16,4 +16,4 @@ Please see each baseimage README for usage and changelogs.
 
 Issues raised and pull requests are most welcome. 
 
-Internal communication takes place at the NAV slack in the #docker channel.
+Internal communication takes place at the NAV slack in the #docker channel. 

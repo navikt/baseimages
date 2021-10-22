@@ -1,6 +1,8 @@
 ARG java_version
 
-FROM appdynamics/java-agent:21.6.0 AS appdynamics
+FROM appdynamics/java-agent:21.8.0 AS appdynamics
+RUN find /opt/appdynamics -type d -name argentoDynamicService -exec rm -rf {} +;
+
 FROM navikt/java:common AS java-common
 FROM openjdk:${java_version}-slim
 
@@ -25,6 +27,7 @@ ENV APP_BINARY=app
 ENV APP_JAR=app.jar
 ENV MAIN_CLASS="Main"
 ENV CLASSPATH="/app/WEB-INF/classes:/app/WEB-INF/lib/*"
+ENV APPDYNAMICS_AGENT_BASE_DIR=/tmp/appdynamics
 
 WORKDIR /app
 
