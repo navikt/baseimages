@@ -10,12 +10,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        lang: [python, java, node]
     steps:
       - name: Checkout latest code
         uses: actions/checkout@v2
 
       - name: Build all images
-        run: make -j && make -w -C test
+        run: make -j ${{ matrix.lang }}
+
+      - name: Test java images
+        if: matrix.lang == 'java'
+        run: make -w -C test
 
       - name: Deploy them to Docker Hub
         run: bash docker_push.sh

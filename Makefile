@@ -17,6 +17,7 @@ wildfly-17:
 common:
 	docker build -t navikt/common:0.3 common
 
+java: $(java_targets)
 $(java_targets): java-%: common java/Dockerfile
 	docker pull openjdk:$(*)-slim
 	docker build -t navikt/java:$(*) --build-arg java_version=$(*) java
@@ -27,10 +28,12 @@ java-8-fat:
 	docker pull openjdk:8
 	docker build -t navikt/java:8-fat java/8-fat
 
+node: $(node_targets)
 $(node_targets): node-%: common node-express/Dockerfile node-express
 	docker pull node:$(*)-alpine
 	docker build -t navikt/node-express:$(*) --build-arg node_version=$(*) node-express
 
+python: $(python_targets)
 $(python_targets): python-%: common python/Dockerfile python/run-python.sh
 	docker pull python:$(*)-slim
 	docker build -t navikt/python:$(*) --build-arg python_version=$(*) python
