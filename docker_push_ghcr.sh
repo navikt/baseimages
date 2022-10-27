@@ -4,3 +4,5 @@ echo "$GITHUB_TOKEN" | docker login -u "$GITHUB_USERNAME" --password-stdin ghcr.
 for img in temurin; do
   docker push --all-tags navikt/$img
 done
+
+docker logout ghcr.io
