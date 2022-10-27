@@ -33,8 +33,8 @@ java-8-fat:
 # Alternative eclipse temurin distribution - teamforeldrepenger uses it.
 $(temurin_targets): temurin-%: common java/Dockerfile
 	docker pull eclipse-temurin:$(*)-jre
-	docker build -t navikt/temurin:$(*) --build-arg base_image=eclipse-temurin:$(*)-jre java
-	docker build -t navikt/temurin:$(*)-appdynamics --build-arg base_image=eclipse-temurin:$(*)-jre java/appdynamics
+	docker build -t ghcr.io/navikt/baseimages/temurin:$(*) --build-arg base_image=eclipse-temurin:$(*)-jre java
+	docker build -t ghcr.io/navikt/baseimages/temurin:$(*)-appdynamics --build-arg base_image=eclipse-temurin:$(*)-jre java/appdynamics
 
 $(node_targets): node-%: common node-express/Dockerfile node-express
 	docker pull node:$(*)-alpine
