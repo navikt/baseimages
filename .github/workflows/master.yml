@@ -13,9 +13,6 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        TEMURIN_VERSIONS: [8, 11, 17, 18]
     steps:
       - name: Checkout latest code
         uses: actions/checkout@v3
@@ -38,5 +35,4 @@ jobs:
 
       - name: Push images to GHCR.io
         run: |
-          docker push ${GHCR_IMAGE_BASE}/temurin-${{ matrix.TEMURIN_VERSIONS }}
-          docker push ${GHCR_IMAGE_BASE}/temurin-${{ matrix.TEMURIN_VERSIONS }}-appdynamics
+          docker push --all-tags ${GHCR_IMAGE_BASE}/temurin
