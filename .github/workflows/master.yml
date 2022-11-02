@@ -7,15 +7,9 @@ on:
   schedule:
     - cron: '22 22 * * 2'
 
-env:
-  GHCR_IMAGE_BASE: ghcr.io/${{ github.repository }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        TEMURIN_VERSIONS: [8, 11, 17, 18]
     steps:
       - name: Checkout latest code
         uses: actions/checkout@v3
@@ -36,7 +30,5 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push images to GHCR.io
-        run: |
-          docker push ${GHCR_IMAGE_BASE}/temurin-${{ matrix.TEMURIN_VERSIONS }}
-          docker push ${GHCR_IMAGE_BASE}/temurin-${{ matrix.TEMURIN_VERSIONS }}-appdynamics
+      - name: Push temurin images to GHCR.io
+        run: docker push --all-tags ghcr.io/${{ github.repository }}/temurin
