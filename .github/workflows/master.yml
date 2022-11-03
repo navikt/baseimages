@@ -6,6 +6,7 @@ on:
       - master
   schedule:
     - cron: '22 22 * * 2'
+  workflow_dispatch:
 
 jobs:
   build:
