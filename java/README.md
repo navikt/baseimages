@@ -43,7 +43,7 @@ COPY target/my-awesome.jar app.jar
 # Extract layers
 RUN java -Djarmode=layertools -jar app.jar extract
 
-FROM navikt/temurin:<version>
+FROM ghcr.io/navikt/baseimages/temurin:<java-version>
 
 # Copy extracted layers into container
 COPY --from=builder --chown=apprunner:apprunner application/dependencies/ ./
