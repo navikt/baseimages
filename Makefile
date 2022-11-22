@@ -1,4 +1,4 @@
-PYTHON_VERSIONS = 3.7 3.8 3.9
+PYTHON_VERSIONS = 3.7 3.8 3.9 3.10 3.11
 python_targets = $(addprefix python-, $(PYTHON_VERSIONS))
 
 JAVA_VERSIONS = 8 11 13 14 15 16 17 18
@@ -10,9 +10,17 @@ node_targets = $(addprefix node-, $(NODE_VERSIONS))
 TEMURIN_VERSIONS = 8 11 17 18
 temurin_targets = $(addprefix temurin-, $(TEMURIN_VERSIONS))
 
-.PHONY: all common $(java_targets) java-8-fat $(node_targets) $(python_targets) wildfly-17 $(temurin_targets)
+.PHONY: all java node python temurin common $(java_targets) java-8-fat $(node_targets) $(python_targets) wildfly-17 $(temurin_targets)
 
 all: $(java_targets) java-8-fat $(node_targets) $(python_targets) wildfly-17 $(temurin_targets)
+
+java: $(java_targets) java-8-fat
+
+node: $(node_targets)
+
+python: $(python_targets)
+
+temurin: $(temurin_targets)
 
 wildfly-17:
 	docker build -t navikt/wildfly:17 wildfly-17
