@@ -3,7 +3,7 @@ name: Build and deploy
 on:
   push:
     branches:
-      - master
+      - '**'
   schedule:
     - cron: '22 22 * * 2'
   workflow_dispatch:
@@ -19,10 +19,26 @@ jobs:
         run: make -j && make -w -C test
 
       - name: Deploy them to Docker Hub
+        if: github.ref_name == 'master'
         run: bash docker_push.sh
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+  build-temurin:
+    strategy:
+      matrix:
+        version: [ '8', '11', '17', '18', '19' ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@v3
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
       - name: Login to GitHub Packages Docker Registry
         uses: docker/login-action@v2
@@ -31,5 +47,48 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push temurin images to GHCR.io
-        run: docker push --all-tags ghcr.io/${{ github.repository }}/temurin
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: java
+          platforms: linux/amd64,linux/arm64
+          build-args: base_image=eclipse-temurin:${{matrix.version}}-jre
+          pull: true
+          push: ${{ github.ref_name == 'master' }}
+          tags: ghcr.io/${{ github.repository }}/temurin:${{matrix.version}}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  build-temurin-appd:
+    strategy:
+      matrix:
+        version: [ '8', '11', '17', '18', '19' ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@v3
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to GitHub Packages Docker Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: java/appdynamics
+          platforms: linux/amd64,linux/arm64
+          build-args: base_image=eclipse-temurin:${{matrix.version}}-jre
+          pull: true
+          push: ${{ github.ref_name == 'master' }}
+          tags: ghcr.io/${{ github.repository }}/temurin:${{matrix.version}}-appdynamics
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

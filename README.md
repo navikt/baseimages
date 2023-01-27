@@ -9,8 +9,12 @@ Available images from Dockerhub:
 * Python 3.7, 3.8 and 3.9 ([`python`](python))
 
 Available images from Github Container Registry:
-* Adoptium Temurin LTS 8, 11, 17 and 18 https://adoptium.net/ ([`java`](java)) (ex. `FROM ghcr.io/navikt/baseimages/temurin:17`)
+* Adoptium Temurin 8, 11, 17, 18 and 19 https://adoptium.net/ ([`java`](java)) (ex. `FROM ghcr.io/navikt/baseimages/temurin:17`)
 * Temurin with appdynamics-support, add -appdynamics suffix. (ex. `FROM ghcr.io/navikt/baseimages/temurin:17-appdynamics`)
+* Latest Temurin LTS release is 17.
+* Both temurin and temurin-appdynamics builds are available for `linux/amd64` (Intel) and `linux/arm64` (Apple Silicon) platforms.
+
+NB! The current arm64 build does not take `/dumb-init` into consideration thus this needs to be emulated at rutime on Apple machines with Apple Silicon processors.
 
 ## Getting Started
 

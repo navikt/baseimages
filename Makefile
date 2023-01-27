@@ -7,20 +7,15 @@ java_targets = $(addprefix java-, $(JAVA_VERSIONS))
 NODE_VERSIONS = 9 12 14 16 18
 node_targets = $(addprefix node-, $(NODE_VERSIONS))
 
-TEMURIN_VERSIONS = 8 11 17 18
-temurin_targets = $(addprefix temurin-, $(TEMURIN_VERSIONS))
+.PHONY: all java node python common $(java_targets) java-8-fat $(node_targets) $(python_targets) wildfly-17
 
-.PHONY: all java node python temurin common $(java_targets) java-8-fat $(node_targets) $(python_targets) wildfly-17 $(temurin_targets)
-
-all: $(java_targets) java-8-fat $(node_targets) $(python_targets) wildfly-17 $(temurin_targets)
+all: $(java_targets) java-8-fat $(node_targets) $(python_targets) wildfly-17
 
 java: $(java_targets) java-8-fat
 
 node: $(node_targets)
 
 python: $(python_targets)
-
-temurin: $(temurin_targets)
 
 wildfly-17:
 	docker build -t navikt/wildfly:17 wildfly-17
@@ -37,12 +32,6 @@ $(java_targets): java-%: common java/Dockerfile
 java-8-fat:
 	docker pull openjdk:8
 	docker build -t navikt/java:8-fat java/8-fat
-
-# Alternative eclipse temurin distribution - teamforeldrepenger uses it.
-$(temurin_targets): temurin-%: common java/Dockerfile
-	docker pull eclipse-temurin:$(*)-jre
-	docker build -t ghcr.io/navikt/baseimages/temurin:$(*) --build-arg base_image=eclipse-temurin:$(*)-jre java
-	docker build -t ghcr.io/navikt/baseimages/temurin:$(*)-appdynamics --build-arg base_image=eclipse-temurin:$(*)-jre java/appdynamics
 
 $(node_targets): node-%: common node-express/Dockerfile node-express
 	docker pull node:$(*)-alpine
