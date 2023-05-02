@@ -4,7 +4,7 @@ python_targets = $(addprefix python-, $(PYTHON_VERSIONS))
 JAVA_VERSIONS = 8 11 13 14 15 16 17 18
 java_targets = $(addprefix java-, $(JAVA_VERSIONS))
 
-NODE_VERSIONS = 9 12 14 16 18
+NODE_VERSIONS = 9 12 14 16
 node_targets = $(addprefix node-, $(NODE_VERSIONS))
 
 .PHONY: all java node python common $(java_targets) java-8-fat $(node_targets) $(python_targets) wildfly-17

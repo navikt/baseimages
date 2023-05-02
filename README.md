@@ -5,7 +5,7 @@ This project contains base docker images for use with the NAIS platform.
 
 Available images from Dockerhub:
 * JDK 8 and 11 - 18 ([`java`](java)) - (`ALL versions deprecated/unsupported, should NOT be used`)
-* Node 9, 12, 14, 16 and 18 with Express 4 ([`node-express`](node-express)) (`9, 12 & 14 are deprecated`)
+* Node 9, 12, 14 and 16 with Express 4 ([`node-express`](node-express)) (`9, 12 & 14 are deprecated`)
 * Python 3.7, 3.8 and 3.9 ([`python`](python))
 
 Available images from Github Container Registry:
