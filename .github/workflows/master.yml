@@ -2,8 +2,7 @@ name: Build and deploy
 
 on:
   push:
-    branches:
-      - '**'
+    branches: [ master ]
   schedule:
     - cron: '22 22 * * 2'
   workflow_dispatch:
