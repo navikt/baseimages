@@ -51,6 +51,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Pull & build JDK pre-reqs
+        run: |
+          docker pull openjdk:8
+          docker build -t navikt/common:0.3 common
+
       - name: Build & push JDK8 non-slim
         run: |
           docker build -t navikt/java:8-fat java/8-fat
