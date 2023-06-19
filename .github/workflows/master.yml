@@ -2,7 +2,8 @@ name: Build and deploy
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - '**'
   schedule:
     - cron: '22 22 * * 2'
   workflow_dispatch:
@@ -34,6 +35,7 @@ jobs:
           docker build -t navikt/java:${{matrix.java}}-appdynamics --build-arg base_image=openjdk:${{matrix.java}}-slim java/appdynamics
 
       - name: Push Java images
+        if: ${{ github.ref_name == 'master' }}
         run: docker push --all-tags navikt/java
 
   build-legacy-java8-and-wildfly:
@@ -53,15 +55,19 @@ jobs:
           docker pull openjdk:8
           docker build -t navikt/common:0.3 common
 
-      - name: Build & push JDK8 non-slim
-        run: |
-          docker build -t navikt/java:8-fat java/8-fat
-          docker push --alltags navikt/java
+      - name: Build JDK8 non-slim
+        run: docker build -t navikt/java:8-fat java/8-fat
+
+      - name: Push JDK8 non-slim image
+        if: ${{ github.ref_name == 'master' }}
+        run: docker push --alltags navikt/java
 
       - name: Build & Push wildfly image
-        run: |
-          docker build -t navikt/wildfly:17 wildfly-17
-          docker push --alltags navikt/wildfly
+        run: docker build -t navikt/wildfly:17 wildfly-17
+
+      - name: Push wildfly image
+        if: ${{ github.ref_name == 'master' }}
+        run: docker push --alltags navikt/wildfly
 
   build-legacy-node-express:
     strategy:
@@ -85,6 +91,7 @@ jobs:
         run: docker build -t navikt/node-express:${{matrix.node}} --build-arg node_version=${{matrix.node}} node-express
 
       - name: Push node-express images
+        if: ${{ github.ref_name == 'master' }}
         run: docker push --all-tags navikt/node-express
 
   build-legacy-python:
@@ -109,6 +116,7 @@ jobs:
         run: docker build -t navikt/python:${{matrix.python}} --build-arg python_version=${{matrix.python}} python
 
       - name: Push python images
+        if: ${{ github.ref_name == 'master' }}
         run: docker push --all-tags navikt/python
 
   build-temurin:
