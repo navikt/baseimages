@@ -6,10 +6,10 @@ This project contains base docker images for use with the NAIS platform.
 Available images from Dockerhub:
 * JDK 8 and 11 - 18 ([`java`](java)) - (`ALL versions deprecated/unsupported, should NOT be used`)
 * Node 9, 12, 14 and 16 with Express 4 ([`node-express`](node-express)) (`9, 12 & 14 are deprecated`)
-* Python 3.7, 3.8 and 3.9 ([`python`](python))
+* Python 3.7 - 3.11 ([`python`](python))
 
 Available images from Github Container Registry:
-* Adoptium Temurin 8, 11, 17, 18 and 19 https://adoptium.net/ ([`java`](java)) (ex. `FROM ghcr.io/navikt/baseimages/temurin:17`)
+* Adoptium Temurin 8, 11, 17 - 20 https://adoptium.net/ ([`java`](java)) (ex. `FROM ghcr.io/navikt/baseimages/temurin:17`)
 * Temurin with appdynamics-support, add -appdynamics suffix. (ex. `FROM ghcr.io/navikt/baseimages/temurin:17-appdynamics`)
 * Latest Temurin LTS release is 17.
 * Both temurin and temurin-appdynamics builds are available for `linux/amd64` (Intel) and `linux/arm64` (Apple Silicon) platforms.
