@@ -11,7 +11,7 @@ jobs:
   build-legacy-java:
     strategy:
       matrix:
-        java: [ '8', '11', '17', '18', '19' ]
+        java: [ '8', '11', '13', '14', '15', '16', '17', '18' ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout latest code
@@ -37,9 +37,6 @@ jobs:
         run: docker push --all-tags navikt/java
 
   build-legacy-java8-and-wildfly:
-    strategy:
-      matrix:
-        java: [ '8', '11', '13', '14', '15', '16', '17', '18' ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout latest code
