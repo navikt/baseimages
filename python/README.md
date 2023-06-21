@@ -20,6 +20,6 @@ The simplest way of running your app is to create a script to start the applicat
 Since the default working directory is `/app`, there's no need to specify the path.
 
 ```Dockerfile
-FROM navikt/python:3.8
+FROM ghcr.io/navikt/baseimages/python:3.8
 COPY my-cool-app/ .
 ```
