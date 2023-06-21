@@ -61,7 +61,7 @@ jobs:
 
       - name: Push node-express images
         if: ${{ github.ref_name == 'master' }}
-        run: docker push --all-tags navikt/node-express
+        run: docker push --all-tags ghcr.io/${{ github.repository }}/node-express
 
   build-legacy-python:
     strategy:
@@ -86,7 +86,7 @@ jobs:
 
       - name: Push python images
         if: ${{ github.ref_name == 'master' }}
-        run: docker push --all-tags navikt/python
+        run: docker push --all-tags ghcr.io/${{ github.repository }}/python
 
   build-temurin:
     strategy:
