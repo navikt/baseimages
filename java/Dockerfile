@@ -1,5 +1,5 @@
 ARG base_image
-FROM navikt/java:common AS java-common
+FROM ghcr.io/navikt/baseimages/java:common AS java-common
 FROM ${base_image}
 
 RUN umask o+r

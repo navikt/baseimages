@@ -18,14 +18,14 @@ The simplest way of running your app is to create a far jar and copy it into you
 Since the default working directory is `/app`, there's no need to specify the path.
 
 ```Dockerfile
-FROM navikt/java:<version>
+FROM ghcr.io/navikt/baseimages/temurin:<version>
 COPY target/my-awesome.jar app.jar
 ```
 
 If you want to use another name for your file, set it using `APP_JAR`:
 
 ```Dockerfile
-FROM navikt/java:<version>
+FROM ghcr.io/navikt/baseimages/temurin:<version>
 ENV APP_JAR=my-awesome.jar
 COPY target/my-awesome.jar .
 ```
