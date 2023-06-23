@@ -36,7 +36,7 @@ jobs:
   build-legacy-node-express:
     strategy:
       matrix:
-        node: [ '9', '12', '14', '16' ]
+        node: [ '9', '12', '14', '16', '18' ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout latest code
