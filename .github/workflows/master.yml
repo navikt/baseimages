@@ -53,7 +53,7 @@ jobs:
         run: docker pull node:${{matrix.node}}-alpine
 
       - name: Build node-express images
-        run: docker build -t ghcr.io/${{ github.repository }}/node-express:${{matrix.node}} --build-arg node_version=${{matrix.node}} node-express
+        run: docker build -t ghcr.io/${{ github.repository }}/node-express:${{matrix.node}} -t ghcr.io/${{ github.repository }}/node-express:${{matrix.node}}-alpine --build-arg node_version=${{matrix.node}} node-express
 
       - name: Push node-express images
         if: ${{ github.ref_name == 'master' }}
