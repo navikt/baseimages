@@ -21,9 +21,9 @@ Available images from **Github Container Registry**:
     * Both temurin and temurin-appdynamics builds are available for `linux/amd64` (Intel) and `linux/arm64` (Apple Silicon) platforms.
     * NB! The current arm64 build does not take `/dumb-init` into consideration thus this needs to be emulated at rutime on Apple machines with Apple Silicon processors.
 * **Node**
-  * Node 9, 12, 14 and 16 with Express 4 ([`node-express`](node-express)) (`9, 12 & 14 are deprecated`) (ex. `FROM ghcr.io/navikt/baseimages/node-express:16`)
+  * Node 16 and 18 with Express 4 ([`node-express`](node-express)) (`9, 12 & 14 not updated`) (ex. `FROM ghcr.io/navikt/baseimages/node-express:18`)
 * **Python**
-  * Python 3.7 - 3.11 ([`python`](python)) (ex. `FROM ghcr.io/navikt/baseimages/python:3.11`)
+  * Python 3.8 - 3.11 ([`python`](python)) (`3.7 not updated`) (ex. `FROM ghcr.io/navikt/baseimages/python:3.11`)
 
 
 ## Getting Started
