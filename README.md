@@ -3,17 +3,28 @@ NAIS baseimages
 
 This project contains base docker images for use with the NAIS platform.
 
+
+> [!IMPORTANT]
+> NAIS baseimages are not actively maintained and should be considered deprecated.
+> 
+> Consider using official images or preferably distroless alternatives.
+> 
+> Read more in the security playbook: [HERE](https://sikkerhet.nav.no/docs/sikker-utvikling/containere)
+
 ---
 
-## ⚠️ IMAGES FROM DOCKERHUB (`FROM navikt/`) STOPPED RECEIVING UPDATES 2023-01-24 ⚠️
-### Migration guide:
+### ⚠️ IMAGES FROM DOCKERHUB (`FROM navikt/`) STOPPED RECEIVING UPDATES 2023-01-24 ⚠️
+Migration guide:
 * Java: replace `FROM navikt/java:*` with `FROM ghcr.io/navikt/baseimages/temurin:*`
 * Node: replace `FROM navikt/node-express:*` with `FROM ghcr.io/navikt/baseimages/node-express:*`
 * Python: replace `FROM navikt/python:*` with `FROM ghcr.io/navikt/baseimages/python:*`
 
 ---
 
-Available images from **Github Container Registry**:
+<details>
+ 
+<summary>Available images from Github Container Registry</summary>
+
 * **Java**
   * Adoptium Temurin 8, 11, 17 - 20 https://adoptium.net/ ([`java`](java)) (ex. `FROM ghcr.io/navikt/baseimages/temurin:17`)
   * Temurin with appdynamics-support, add -appdynamics suffix. (ex. `FROM ghcr.io/navikt/baseimages/temurin:17-appdynamics`)
@@ -25,6 +36,9 @@ Available images from **Github Container Registry**:
 * **Python**
   * Python 3.7 - 3.11 ([`python`](python)) (ex. `FROM ghcr.io/navikt/baseimages/python:3.11`)
 
+</details>
+
+---
 
 ## Getting Started
 
