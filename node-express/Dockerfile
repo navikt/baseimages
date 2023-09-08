@@ -13,9 +13,7 @@ COPY run-node.sh /run-script.sh
 
 WORKDIR /var/server
 
-RUN npm config set unsafe-perm true \
-    && npm install -g express@4.17.1 \
-    && npm config set unsafe-perm false
+RUN npm install -g express@4.17.1
 
 RUN /setup-apprunner.sh /var/server
 USER apprunner
