@@ -1,5 +1,4 @@
 name: Build and deploy
-
 on:
   push:
     branches:
@@ -38,7 +37,7 @@ jobs:
   build-legacy-node-express:
     strategy:
       matrix:
-        node: [ '16', '18' ]
+        node: [ '18' ]
     runs-on: ubuntu-latest
     permissions:
       packages: write
