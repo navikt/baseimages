@@ -93,7 +93,7 @@ jobs:
   build-temurin:
     strategy:
       matrix:
-        version: [ '8', '11', '17', '20' ]
+        version: [ '8', '11', '17', '21' ]
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -129,7 +129,7 @@ jobs:
   build-temurin-appd:
     strategy:
       matrix:
-        version: [ '8', '11', '17', '20' ]
+        version: [ '8', '11', '17', '21' ]
     runs-on: ubuntu-latest
     permissions:
       packages: write

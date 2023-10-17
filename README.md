@@ -26,7 +26,7 @@ Migration guide:
 <summary>Available images from Github Container Registry</summary>
 
 * **Java**
-  * Adoptium Temurin 8, 11, 17 & 20 https://adoptium.net/ ([`java`](java)) (`18 & 19 not updated`)
+  * Adoptium Temurin 8, 11, 17 & 21 https://adoptium.net/ ([`java`](java)) (`18, 19 & 20 not updated`)
     * Ex. `FROM ghcr.io/navikt/baseimages/temurin:17`
   * Temurin with appdynamics-support, add -appdynamics suffix.
     * Ex. `FROM ghcr.io/navikt/baseimages/temurin:17-appdynamics`
