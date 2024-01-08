@@ -37,7 +37,7 @@ jobs:
   build-legacy-node-express:
     strategy:
       matrix:
-        node: [ '18' ]
+        node: [ '18', '20' ]
     runs-on: ubuntu-latest
     permissions:
       packages: write
