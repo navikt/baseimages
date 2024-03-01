@@ -1,6 +1,6 @@
 ARG base_image
 
-FROM appdynamics/java-agent:23.12.0 AS appdynamics
+FROM appdynamics/java-agent:24.2.0 AS appdynamics
 RUN find /opt/appdynamics -type d -name argentoDynamicService -exec rm -rf {} +;
 
 FROM ghcr.io/navikt/baseimages/java:common AS java-common
