@@ -1,6 +1,6 @@
 ARG base_image
 
-FROM appdynamics/java-agent:24.3.0 AS appdynamics
+FROM appdynamics/java-agent:24.8.0 AS appdynamics
 USER root
 RUN find /opt/appdynamics -type d -name argentoDynamicService -exec rm -rf {} +;
 
