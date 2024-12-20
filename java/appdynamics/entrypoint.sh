@@ -3,17 +3,30 @@
 echo "#########################################################"
 echo "#########################################################"
 echo "#########################################################"
-echo "ERROR: This image is deprecated, node version is EOL."
+echo "ERROR: This image is deprecated, AppDynamics is EOL."
 echo "ERROR: Please migrate to a modern distroless baseimage."
 echo "#########################################################"
 echo "#########################################################"
 echo "#########################################################"
 
-if test -e "/app/server.js";
+
+if test -d /init-scripts;
 then
-    node \
-    /app/server.js \
-    $@
+    for FILE in /init-scripts/*.sh
+    do
+        echo Sourcing $FILE
+        . $FILE
+    done
 else
-    exec $@
+    echo "/init-scripts does not exist, skipping startup scripts"
 fi
+
+if test -e /run-script.sh;
+then
+	exec /run-script.sh $@
+fi
+
+# Run CMDs from Dockerfile directly
+exec "$@"
+
+echo "no run-script.sh or CMD provided. doing nothing"
