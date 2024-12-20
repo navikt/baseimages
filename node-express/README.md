@@ -1,6 +1,17 @@
 Node express
 ============
 
+> [!IMPORTANT]
+> NAIS baseimages are not actively maintained and should be considered deprecated.
+>
+> Consider using official images or preferably distroless alternatives.
+>
+> Read more in the security playbook: [HERE](https://sikkerhet.nav.no/docs/sikker-utvikling/containere)
+
+<details>
+
+<summary>Available images from Github Container Registry</summary>
+
 Docker image med Node og Express installert.
 
 ## Hvordan bruke imaget
@@ -34,3 +45,5 @@ Vi bruker Docker Automated Builds for å release ny versjon. Dette gjøres ved �
 git tag -m "<hvorfor ny tag/release?>" node-express-<version>
 git push --tags
 ```
+
+</details>

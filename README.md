@@ -26,14 +26,12 @@ Migration guide:
 <summary>Available images from Github Container Registry</summary>
 
 * **Java**
-  * Adoptium Temurin 8, 11, 17 & 21 https://adoptium.net/ ([`java`](java)) (`18, 19 & 20 not updated`)
+  * Adoptium Temurin 8, 11, 17 & 21 https://adoptium.net/ ([`java`](java))
     * Ex. `FROM ghcr.io/navikt/baseimages/temurin:17`
-  * Temurin with appdynamics-support, add -appdynamics suffix.
-    * Ex. `FROM ghcr.io/navikt/baseimages/temurin:17-appdynamics`
-  * Both temurin and temurin-appdynamics builds are available for `linux/amd64` (Intel) and `linux/arm64` (Apple Silicon) platforms.
-  * NB! The current arm64 build does not take `/dumb-init` into consideration thus this needs to be emulated at rutime on Apple machines with Apple Silicon processors.
+  * Temurin builds are available for `linux/amd64` (Intel) and `linux/arm64` (Apple Silicon) platforms.
+  * NB! The current arm64 build does not take `/dumb-init` into consideration thus this needs to be emulated at runtime on Apple machines with Apple Silicon processors.
 * **Node**
-  * Node 16 and 18 with Express 4 ([`node-express`](node-express)) (`9, 12 & 14 not updated`)
+  * Node 16 and 18 with Express 4 ([`node-express`](node-express))
     * Ex. `FROM ghcr.io/navikt/baseimages/node-express:18`
 * **Python**
   * Python 3.8 - 3.11 ([`python`](python)) (`3.7 not updated`)
