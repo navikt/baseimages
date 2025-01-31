@@ -126,10 +126,10 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-  build-temurin-appd:
+  build-temurin-alpine:
     strategy:
       matrix:
-        version: [ '8', '11', '17', '21' ]
+        version: [ '11', '21' ]
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -153,11 +153,11 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: java/appdynamics
+          context: java
           platforms: linux/amd64,linux/arm64
-          build-args: base_image=eclipse-temurin:${{matrix.version}}-jre
+          build-args: base_image=eclipse-temurin:${{matrix.version}}-jre-alpine
           pull: true
           push: ${{ github.ref_name == 'master' }}
-          tags: ghcr.io/${{ github.repository }}/temurin:${{matrix.version}}-appdynamics
+          tags: ghcr.io/${{ github.repository }}/temurin:${{matrix.version}}-alpine
           cache-from: type=gha
           cache-to: type=gha,mode=max
