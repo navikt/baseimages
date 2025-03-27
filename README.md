@@ -26,7 +26,7 @@ Migration guide:
 <summary>Available images from Github Container Registry</summary>
 
 * **Java**
-  * Adoptium Temurin 8, 11, 17 & 21 https://adoptium.net/ ([`java`](java))
+  * Adoptium Temurin 8, 11, 17, 21 & 24 https://adoptium.net/ ([`java`](java))
     * Ex. `FROM ghcr.io/navikt/baseimages/temurin:17`
   * Temurin builds are available for `linux/amd64` (Intel) and `linux/arm64` (Apple Silicon) platforms.
   * NB! The current arm64 build does not take `/dumb-init` into consideration thus this needs to be emulated at runtime on Apple machines with Apple Silicon processors.
