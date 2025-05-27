@@ -8,64 +8,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-common-images:
-    runs-on: ubuntu-latest
-    permissions:
-      packages: write
-    steps:
-      - name: Checkout latest code
-        uses: actions/checkout@v4
-
-      - name: Login to GitHub Packages Docker Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build common images
-        run: |
-          docker build -t ghcr.io/${{ github.repository }}/common:0.3 common
-          docker build -t ghcr.io/${{ github.repository }}/java:common java-common
-
-      - name: Push common images
-        if: ${{ github.ref_name == 'master' }}
-        run: |
-          docker push ghcr.io/${{ github.repository }}/common:0.3
-          docker push ghcr.io/${{ github.repository }}/java:common
-
-  build-legacy-node-express:
-    strategy:
-      matrix:
-        node: [ '18' ]
-    runs-on: ubuntu-latest
-    permissions:
-      packages: write
-    steps:
-      - name: Checkout latest code
-        uses: actions/checkout@v4
-
-      - name: Login to GitHub Packages Docker Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Pull node pre-reqs
-        run: docker pull node:${{matrix.node}}-alpine
-
-      - name: Build node-express images
-        run: docker build -t ghcr.io/${{ github.repository }}/node-express:${{matrix.node}} -t ghcr.io/${{ github.repository }}/node-express:${{matrix.node}}-alpine --build-arg node_version=${{matrix.node}} node-express
-
-      - name: Push node-express images
-        if: ${{ github.ref_name == 'master' }}
-        run: docker push --all-tags ghcr.io/${{ github.repository }}/node-express
-
   build-legacy-python:
     strategy:
       matrix:
-        python: [ '3.8', '3.9', '3.10', '3.11' ]
+        python: [ '3.9', '3.10', '3.11' ]
     runs-on: ubuntu-latest
     permissions:
       packages: write
