@@ -1,5 +1,5 @@
-NAIS baseimages
-================
+# :heavy_exclamation_mark: This repository will be archived 1 May 2026 and all images will be removed :heavy_exclamation_mark:
+
 
 > [!IMPORTANT]
 > NAIS baseimages are not actively maintained and should be considered deprecated.
